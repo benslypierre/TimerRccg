@@ -1,0 +1,492 @@
+C:\Users\Owner\Documents\Visual C#\TimerRccg\bin\Debug\TimerRccg.exe.config
+C:\Users\Owner\Documents\Visual C#\TimerRccg\bin\Debug\TimerRccg.exe
+C:\Users\Owner\Documents\Visual C#\TimerRccg\bin\Debug\TimerRccg.pdb
+C:\Users\Owner\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.csproj.AssemblyReference.cache
+C:\Users\Owner\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.csproj.SuggestedBindingRedirects.cache
+C:\Users\Owner\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.Form1.resources
+C:\Users\Owner\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.Form2.resources
+C:\Users\Owner\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.Form3.resources
+C:\Users\Owner\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.Properties.Resources.resources
+C:\Users\Owner\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.csproj.GenerateResource.cache
+C:\Users\Owner\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.exe
+C:\Users\Owner\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.csproj.AssemblyReference.cache
+C:\Users\Dman\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.Form1.resources
+C:\Users\Dman\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.Form2.resources
+C:\Users\Dman\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.Form3.resources
+C:\Users\Dman\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.Form4.resources
+C:\Users\Dman\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.Properties.Resources.resources
+C:\Users\Dman\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.csproj.GenerateResource.cache
+C:\Users\Dman\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.csproj.CoreCompileInputs.cache
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\TimerRccg.exe.config
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\TimerRccg.exe.manifest
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\TimerRccg.application
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\TimerRccg.exe
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\TimerRccg.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\Cauldron.Core.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\Cauldron.Direct3D9.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\Cauldron.Game.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\Cauldron.Mathematics.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\Cauldron.SharpDX.Direct3D9.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\Cauldron.SharpDX.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\Cauldron.SharpDX.RawInput.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\Cauldron.Windows.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\Cyotek.Drawing.BitmapFont.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\HelixToolkit.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\HelixToolkit.SharpDX.Core.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\HelixToolkit.Wpf.SharpDX.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\ILGPU.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\ILGPU.SharpDX.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Animation.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.D3DCompiler.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Desktop.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct2D1.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D10.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D11.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D11.Effects.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D12.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DirectComposition.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DirectInput.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DirectManipulation.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DirectSound.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DXGI.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Mathematics.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.RawInput.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.X3DAudio.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.XAPO.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.XAudio2.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.XInput.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Buffers.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Collections.Immutable.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Memory.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Private.DataContractSerialization.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Reflection.Metadata.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Reflection.TypeExtensions.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\WindowsDisplayAPI.dll
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\Cyotek.Drawing.BitmapFont.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\HelixToolkit.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\HelixToolkit.SharpDX.Core.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\HelixToolkit.Wpf.SharpDX.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\ILGPU.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\ILGPU.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\ILGPU.SharpDX.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Animation.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Animation.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.D3DCompiler.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.D3DCompiler.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct2D1.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct2D1.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D10.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D10.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D11.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D11.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D11.Effects.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D11.Effects.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D12.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D12.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D9.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Direct3D9.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DirectComposition.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DirectComposition.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DirectInput.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DirectInput.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DirectManipulation.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DirectManipulation.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DirectSound.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DirectSound.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DXGI.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.DXGI.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Mathematics.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.Mathematics.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.MediaFoundation.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.RawInput.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.RawInput.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.X3DAudio.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.XAPO.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.XAudio2.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.XAudio2.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.XInput.pdb
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\SharpDX.XInput.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Buffers.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Collections.Immutable.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Memory.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Reflection.Metadata.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Reflection.TypeExtensions.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\bin\Debug\WindowsDisplayAPI.xml
+C:\Users\Dman\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.exe.manifest
+C:\Users\Dman\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.application
+C:\Users\Dman\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.csproj.Up2Date
+C:\Users\Dman\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.exe
+C:\Users\Dman\Documents\Visual C#\TimerRccg\obj\Debug\TimerRccg.pdb
+F:\TimerRccg\bin\Debug\TimerRccg.exe.config
+F:\TimerRccg\bin\Debug\TimerRccg.exe.manifest
+F:\TimerRccg\bin\Debug\TimerRccg.application
+F:\TimerRccg\bin\Debug\TimerRccg.exe
+F:\TimerRccg\bin\Debug\TimerRccg.pdb
+F:\TimerRccg\bin\Debug\Cauldron.Core.dll
+F:\TimerRccg\bin\Debug\Cauldron.Direct3D9.dll
+F:\TimerRccg\bin\Debug\Cauldron.Game.dll
+F:\TimerRccg\bin\Debug\Cauldron.Mathematics.dll
+F:\TimerRccg\bin\Debug\Cauldron.SharpDX.Direct3D9.dll
+F:\TimerRccg\bin\Debug\Cauldron.SharpDX.dll
+F:\TimerRccg\bin\Debug\Cauldron.SharpDX.RawInput.dll
+F:\TimerRccg\bin\Debug\Cauldron.Windows.dll
+F:\TimerRccg\bin\Debug\Cyotek.Drawing.BitmapFont.dll
+F:\TimerRccg\bin\Debug\HelixToolkit.dll
+F:\TimerRccg\bin\Debug\HelixToolkit.SharpDX.Core.dll
+F:\TimerRccg\bin\Debug\HelixToolkit.Wpf.SharpDX.dll
+F:\TimerRccg\bin\Debug\ILGPU.dll
+F:\TimerRccg\bin\Debug\ILGPU.SharpDX.dll
+F:\TimerRccg\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+F:\TimerRccg\bin\Debug\SharpDX.Animation.dll
+F:\TimerRccg\bin\Debug\SharpDX.D3DCompiler.dll
+F:\TimerRccg\bin\Debug\SharpDX.Desktop.dll
+F:\TimerRccg\bin\Debug\SharpDX.Direct2D1.dll
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D10.dll
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D11.dll
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D11.Effects.dll
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D12.dll
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D9.dll
+F:\TimerRccg\bin\Debug\SharpDX.DirectComposition.dll
+F:\TimerRccg\bin\Debug\SharpDX.DirectInput.dll
+F:\TimerRccg\bin\Debug\SharpDX.DirectManipulation.dll
+F:\TimerRccg\bin\Debug\SharpDX.DirectSound.dll
+F:\TimerRccg\bin\Debug\SharpDX.dll
+F:\TimerRccg\bin\Debug\SharpDX.DXGI.dll
+F:\TimerRccg\bin\Debug\SharpDX.Mathematics.dll
+F:\TimerRccg\bin\Debug\SharpDX.MediaFoundation.dll
+F:\TimerRccg\bin\Debug\SharpDX.RawInput.dll
+F:\TimerRccg\bin\Debug\SharpDX.X3DAudio.dll
+F:\TimerRccg\bin\Debug\SharpDX.XAPO.dll
+F:\TimerRccg\bin\Debug\SharpDX.XAudio2.dll
+F:\TimerRccg\bin\Debug\SharpDX.XInput.dll
+F:\TimerRccg\bin\Debug\System.Buffers.dll
+F:\TimerRccg\bin\Debug\System.Collections.Immutable.dll
+F:\TimerRccg\bin\Debug\System.Memory.dll
+F:\TimerRccg\bin\Debug\System.Numerics.Vectors.dll
+F:\TimerRccg\bin\Debug\System.Private.DataContractSerialization.dll
+F:\TimerRccg\bin\Debug\System.Reflection.Metadata.dll
+F:\TimerRccg\bin\Debug\System.Reflection.TypeExtensions.dll
+F:\TimerRccg\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+F:\TimerRccg\bin\Debug\WindowsDisplayAPI.dll
+F:\TimerRccg\bin\Debug\Cyotek.Drawing.BitmapFont.xml
+F:\TimerRccg\bin\Debug\HelixToolkit.xml
+F:\TimerRccg\bin\Debug\HelixToolkit.SharpDX.Core.xml
+F:\TimerRccg\bin\Debug\HelixToolkit.Wpf.SharpDX.xml
+F:\TimerRccg\bin\Debug\ILGPU.pdb
+F:\TimerRccg\bin\Debug\ILGPU.xml
+F:\TimerRccg\bin\Debug\ILGPU.SharpDX.xml
+F:\TimerRccg\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+F:\TimerRccg\bin\Debug\SharpDX.pdb
+F:\TimerRccg\bin\Debug\SharpDX.Animation.pdb
+F:\TimerRccg\bin\Debug\SharpDX.Animation.xml
+F:\TimerRccg\bin\Debug\SharpDX.D3DCompiler.pdb
+F:\TimerRccg\bin\Debug\SharpDX.D3DCompiler.xml
+F:\TimerRccg\bin\Debug\SharpDX.Direct2D1.pdb
+F:\TimerRccg\bin\Debug\SharpDX.Direct2D1.xml
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D10.pdb
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D10.xml
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D11.pdb
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D11.xml
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D11.Effects.pdb
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D11.Effects.xml
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D12.pdb
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D12.xml
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D9.pdb
+F:\TimerRccg\bin\Debug\SharpDX.Direct3D9.xml
+F:\TimerRccg\bin\Debug\SharpDX.DirectComposition.pdb
+F:\TimerRccg\bin\Debug\SharpDX.DirectComposition.xml
+F:\TimerRccg\bin\Debug\SharpDX.DirectInput.pdb
+F:\TimerRccg\bin\Debug\SharpDX.DirectInput.xml
+F:\TimerRccg\bin\Debug\SharpDX.DirectManipulation.pdb
+F:\TimerRccg\bin\Debug\SharpDX.DirectManipulation.xml
+F:\TimerRccg\bin\Debug\SharpDX.DirectSound.pdb
+F:\TimerRccg\bin\Debug\SharpDX.DirectSound.xml
+F:\TimerRccg\bin\Debug\SharpDX.DXGI.pdb
+F:\TimerRccg\bin\Debug\SharpDX.DXGI.xml
+F:\TimerRccg\bin\Debug\SharpDX.Mathematics.pdb
+F:\TimerRccg\bin\Debug\SharpDX.Mathematics.xml
+F:\TimerRccg\bin\Debug\SharpDX.MediaFoundation.pdb
+F:\TimerRccg\bin\Debug\SharpDX.MediaFoundation.xml
+F:\TimerRccg\bin\Debug\SharpDX.RawInput.pdb
+F:\TimerRccg\bin\Debug\SharpDX.RawInput.xml
+F:\TimerRccg\bin\Debug\SharpDX.X3DAudio.xml
+F:\TimerRccg\bin\Debug\SharpDX.XAPO.xml
+F:\TimerRccg\bin\Debug\SharpDX.XAudio2.pdb
+F:\TimerRccg\bin\Debug\SharpDX.XAudio2.xml
+F:\TimerRccg\bin\Debug\SharpDX.XInput.pdb
+F:\TimerRccg\bin\Debug\SharpDX.XInput.xml
+F:\TimerRccg\bin\Debug\System.Buffers.xml
+F:\TimerRccg\bin\Debug\System.Collections.Immutable.xml
+F:\TimerRccg\bin\Debug\System.Memory.xml
+F:\TimerRccg\bin\Debug\System.Numerics.Vectors.xml
+F:\TimerRccg\bin\Debug\System.Reflection.Metadata.xml
+F:\TimerRccg\bin\Debug\System.Reflection.TypeExtensions.xml
+F:\TimerRccg\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+F:\TimerRccg\bin\Debug\WindowsDisplayAPI.xml
+F:\TimerRccg\obj\Debug\TimerRccg.csproj.AssemblyReference.cache
+F:\TimerRccg\obj\Debug\TimerRccg.exe.config
+F:\TimerRccg\obj\Debug\TimerRccg.Form1.resources
+F:\TimerRccg\obj\Debug\TimerRccg.Form2.resources
+F:\TimerRccg\obj\Debug\TimerRccg.Form3.resources
+F:\TimerRccg\obj\Debug\TimerRccg.Form4.resources
+F:\TimerRccg\obj\Debug\TimerRccg.Properties.Resources.resources
+F:\TimerRccg\obj\Debug\TimerRccg.csproj.GenerateResource.cache
+F:\TimerRccg\obj\Debug\TimerRccg.csproj.CoreCompileInputs.cache
+F:\TimerRccg\obj\Debug\TimerRccg.exe.manifest
+F:\TimerRccg\obj\Debug\TimerRccg.application
+F:\TimerRccg\obj\Debug\TimerRccg.csproj.Up2Date
+F:\TimerRccg\obj\Debug\TimerRccg.exe
+F:\TimerRccg\obj\Debug\TimerRccg.pdb
+C:\Users\bensl\Downloads\TimerRccg\obj\Debug\TimerRccg.csproj.AssemblyReference.cache
+C:\Users\bensl\Downloads\TimerRccg\obj\Debug\TimerRccg.exe.config
+C:\Users\bensl\Downloads\TimerRccg\obj\Debug\TimerRccg.exe
+C:\Users\bensl\Downloads\TimerRccg\obj\Debug\TimerRccg.pdb
+C:\Users\bensl\Downloads\TimerRccg\obj\Debug\TimerRccg.Form1.resources
+C:\Users\bensl\Downloads\TimerRccg\obj\Debug\TimerRccg.Form2.resources
+C:\Users\bensl\Downloads\TimerRccg\obj\Debug\TimerRccg.Form3.resources
+C:\Users\bensl\Downloads\TimerRccg\obj\Debug\TimerRccg.Form4.resources
+C:\Users\bensl\Downloads\TimerRccg\obj\Debug\TimerRccg.Properties.Resources.resources
+C:\Users\bensl\Downloads\TimerRccg\obj\Debug\TimerRccg.csproj.GenerateResource.cache
+C:\Users\bensl\Downloads\TimerRccg\obj\Debug\TimerRccg.csproj.CoreCompileInputs.cache
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\TimerRccg.exe.config
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\TimerRccg.exe.manifest
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\TimerRccg.application
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\TimerRccg.exe
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\TimerRccg.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\Cauldron.Core.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\Cauldron.Direct3D9.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\Cauldron.Game.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\Cauldron.Mathematics.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\Cauldron.SharpDX.Direct3D9.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\Cauldron.SharpDX.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\Cauldron.SharpDX.RawInput.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\Cauldron.Windows.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\Cyotek.Drawing.BitmapFont.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\HelixToolkit.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\HelixToolkit.SharpDX.Core.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\HelixToolkit.Wpf.SharpDX.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\ILGPU.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\ILGPU.SharpDX.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Animation.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.D3DCompiler.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Desktop.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct2D1.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D10.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D11.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D11.Effects.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D12.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DirectComposition.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DirectInput.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DirectManipulation.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DirectSound.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DXGI.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Mathematics.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.MediaFoundation.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.RawInput.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.X3DAudio.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.XAPO.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.XAudio2.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.XInput.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Buffers.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Collections.Immutable.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Memory.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Private.DataContractSerialization.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Reflection.Metadata.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Reflection.TypeExtensions.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\WindowsDisplayAPI.dll
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\Cyotek.Drawing.BitmapFont.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\HelixToolkit.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\HelixToolkit.SharpDX.Core.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\HelixToolkit.Wpf.SharpDX.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\ILGPU.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\ILGPU.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\ILGPU.SharpDX.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Animation.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Animation.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.D3DCompiler.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.D3DCompiler.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct2D1.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct2D1.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D10.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D10.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D11.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D11.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D11.Effects.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D11.Effects.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D12.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D12.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D9.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Direct3D9.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DirectComposition.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DirectComposition.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DirectInput.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DirectInput.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DirectManipulation.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DirectManipulation.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DirectSound.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DirectSound.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DXGI.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.DXGI.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Mathematics.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.Mathematics.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.MediaFoundation.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.MediaFoundation.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.RawInput.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.RawInput.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.X3DAudio.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.XAPO.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.XAudio2.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.XAudio2.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.XInput.pdb
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\SharpDX.XInput.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Buffers.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Collections.Immutable.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Memory.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Reflection.Metadata.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Reflection.TypeExtensions.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\bensl\Downloads\TimerRccg\bin\Debug\WindowsDisplayAPI.xml
+C:\Users\bensl\Downloads\TimerRccg\obj\Debug\TimerRccg.exe.manifest
+C:\Users\bensl\Downloads\TimerRccg\obj\Debug\TimerRccg.application
+C:\Users\bensl\Downloads\TimerRccg\obj\Debug\TimerRccg.csproj.Up2Date
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\TimerRccg.exe.config
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\TimerRccg.exe.manifest
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\TimerRccg.application
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\TimerRccg.exe
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\TimerRccg.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Cauldron.Core.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Cauldron.Direct3D9.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Cauldron.Game.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Cauldron.Mathematics.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Cauldron.SharpDX.Direct3D9.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Cauldron.SharpDX.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Cauldron.SharpDX.RawInput.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Cauldron.Windows.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Cyotek.Drawing.BitmapFont.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\HelixToolkit.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\HelixToolkit.SharpDX.Core.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\HelixToolkit.Wpf.SharpDX.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\ILGPU.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\ILGPU.SharpDX.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Animation.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.D3DCompiler.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Desktop.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct2D1.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D10.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D11.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D11.Effects.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D12.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DirectComposition.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DirectInput.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DirectManipulation.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DirectSound.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DXGI.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Mathematics.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.RawInput.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.X3DAudio.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.XAPO.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.XAudio2.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.XInput.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Buffers.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Collections.Immutable.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Memory.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Private.DataContractSerialization.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Reflection.Metadata.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Reflection.TypeExtensions.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\WindowsDisplayAPI.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Cyotek.Drawing.BitmapFont.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\HelixToolkit.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\HelixToolkit.SharpDX.Core.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\HelixToolkit.Wpf.SharpDX.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\ILGPU.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\ILGPU.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\ILGPU.SharpDX.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Animation.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Animation.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.D3DCompiler.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.D3DCompiler.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct2D1.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct2D1.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D10.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D10.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D11.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D11.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D11.Effects.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D11.Effects.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D12.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D12.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D9.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Direct3D9.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DirectComposition.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DirectComposition.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DirectInput.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DirectInput.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DirectManipulation.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DirectManipulation.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DirectSound.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DirectSound.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DXGI.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.DXGI.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Mathematics.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Mathematics.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.MediaFoundation.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.RawInput.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.RawInput.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.X3DAudio.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.XAPO.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.XAudio2.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.XAudio2.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.XInput.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.XInput.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Buffers.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Collections.Immutable.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Memory.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Reflection.Metadata.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Reflection.TypeExtensions.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\WindowsDisplayAPI.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.csproj.AssemblyReference.cache
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.Form1.resources
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.Form2.resources
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.Form3.resources
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.Form4.resources
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.Properties.Resources.resources
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.csproj.GenerateResource.cache
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.exe.manifest
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.application
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.csproj.Up2Date
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.exe
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.exe.config

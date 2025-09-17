@@ -1,0 +1,772 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ILGPU.SharpDX</name>
+    </assembly>
+    <members>
+        <member name="T:ILGPU.SharpDX.AcceleratorExtensions">
+            <summary>
+            Represents extension methods for ILGPU accelerators.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.AcceleratorExtensions.CreateDirectXInteropAccelerator(ILGPU.Runtime.Accelerator,SharpDX.Direct3D11.Device)">
+            <summary>
+            Creates a new DX-interop accelerator.
+            </summary>
+            <param name="accelerator">The source accelerator.</param>
+            <param name="d3dDevice">The target DX device.</param>
+            <returns>The created DX-interop accelerator.</returns>
+        </member>
+        <member name="T:ILGPU.SharpDX.CPU.CPUDirectXAccelerator">
+            <summary>
+            Represents a CPU accelerator for DX interop.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXAccelerator.ConvertToMapMode(ILGPU.SharpDX.DirectXViewFlags)">
+            <summary>
+            Convert the given view flags into a compatible MapMode.
+            </summary>
+            <param name="flags">The flags to convert.</param>
+            <returns>The converted map mode.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXAccelerator.#ctor(ILGPU.Runtime.CPU.CPUAccelerator,SharpDX.Direct3D11.Device)">
+            <summary>
+            Constructs a new CPU DX-interop accelerator.
+            </summary>
+            <param name="accelerator">The target CPU accelerator.</param>
+            <param name="d3dDevice">The target DX device.</param>
+        </member>
+        <member name="P:ILGPU.SharpDX.CPU.CPUDirectXAccelerator.CPUAccelerator">
+            <summary>
+            Returns the assigned CPU accelerator.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXAccelerator.CreateBuffer``1(SharpDX.Direct3D11.Buffer,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary cref="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateBuffer``1(SharpDX.Direct3D11.Buffer,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXAccelerator.CreateTexture2D(SharpDX.Direct3D11.Texture2D,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary cref="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateTexture2D(SharpDX.Direct3D11.Texture2D,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXAccelerator.CreateMapping(SharpDX.Direct3D11.DeviceContext,ILGPU.SharpDX.DirectXBuffer[])">
+            <summary cref="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateMapping(SharpDX.Direct3D11.DeviceContext,ILGPU.SharpDX.DirectXBuffer[])"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXAccelerator.UnmapBuffers(SharpDX.Direct3D11.DeviceContext,ILGPU.SharpDX.DirectXBuffer[])">
+            <summary cref="M:ILGPU.SharpDX.DirectXInteropAccelerator.UnmapBuffers(SharpDX.Direct3D11.DeviceContext,ILGPU.SharpDX.DirectXBuffer[])"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXAccelerator.Dispose(System.Boolean)">
+            <summary cref="M:ILGPU.Util.DisposeBase.Dispose(System.Boolean)"/>
+        </member>
+        <member name="T:ILGPU.SharpDX.CPU.CPUDirectXBuffer`1">
+            <summary>
+            Represents a DX-compatible CPU buffer.
+            </summary>
+            <typeparam name="T">The element type.</typeparam>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXBuffer`1.#ctor(ILGPU.Runtime.CPU.CPUAccelerator,SharpDX.Direct3D11.Device,SharpDX.Direct3D11.Buffer,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary>
+            Constructs a new CPU buffer for DX interop.
+            </summary>
+            <param name="accelerator">The target accelerator.</param>
+            <param name="d3dDevice">The target DX device.</param>
+            <param name="buffer">The target DX buffer.</param>
+            <param name="bufferFlags">The buffer flags.</param>
+            <param name="viewFlags">The registration flags.</param>
+        </member>
+        <member name="P:ILGPU.SharpDX.CPU.CPUDirectXBuffer`1.CPUAccelerator">
+            <summary>
+            Returns the associated CPU accelerator.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXBuffer`1.OnMap(SharpDX.Direct3D11.DeviceContext)">
+            <summary cref="M:ILGPU.SharpDX.DirectXBuffer.OnMap(SharpDX.Direct3D11.DeviceContext)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXBuffer`1.OnUnmap(SharpDX.Direct3D11.DeviceContext)">
+            <summary cref="M:ILGPU.SharpDX.DirectXBuffer.OnUnmap(SharpDX.Direct3D11.DeviceContext)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXBuffer`1.Dispose(System.Boolean)">
+            <summary cref="M:ILGPU.SharpDX.DirectXBuffer`1.Dispose(System.Boolean)"/>
+        </member>
+        <member name="T:ILGPU.SharpDX.CPU.CPUDirectXTexture2D">
+            <summary>
+            Represents a DX-compatible CPU texture.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXTexture2D.#ctor(ILGPU.Runtime.CPU.CPUAccelerator,SharpDX.Direct3D11.Device,SharpDX.Direct3D11.Texture2D,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary>
+            Constructs a new CPU texture 2D.
+            </summary>
+            <param name="accelerator">The target accelerator.</param>
+            <param name="d3dDevice">The target DX device.</param>
+            <param name="texture">The target DX texture.</param>
+            <param name="bufferFlags">The used buffer flags.</param>
+            <param name="viewFlags">The used view flags.</param>
+        </member>
+        <member name="P:ILGPU.SharpDX.CPU.CPUDirectXTexture2D.CPUAccelerator">
+            <summary>
+            Returns the associated CPU accelerator.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXTexture2D.EnsureSpace(System.Int32)">
+            <summary>
+            Ensures that the CPU-memory buffer has the given size.
+            </summary>
+            <param name="size">The desired target size in bytes.</param>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXTexture2D.OnMap(SharpDX.Direct3D11.DeviceContext)">
+            <summary cref="M:ILGPU.SharpDX.DirectXBuffer.OnMap(SharpDX.Direct3D11.DeviceContext)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXTexture2D.OnUnmap(SharpDX.Direct3D11.DeviceContext)">
+            <summary cref="M:ILGPU.SharpDX.DirectXBuffer.OnUnmap(SharpDX.Direct3D11.DeviceContext)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.CPU.CPUDirectXTexture2D.Dispose(System.Boolean)">
+            <summary cref="M:ILGPU.SharpDX.DirectXBuffer`1.Dispose(System.Boolean)"/>
+        </member>
+        <member name="T:ILGPU.SharpDX.CPU.ICPUDirectXBuffer">
+            <summary>
+            Represents an abstract buffer for CPU-DX interop.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.CPU.ICPUDirectXBuffer.CPUAccelerator">
+            <summary>
+            Returns the associated CPU accelerator.
+            </summary>
+        </member>
+        <member name="T:ILGPU.SharpDX.Cuda.CudaDirectXAccelerator">
+            <summary>
+            Represents a Cuda accelerator for DX interop.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXAccelerator.RegisterResource(SharpDX.Direct3D11.Resource,ILGPU.SharpDX.DirectXViewFlags,System.IntPtr@)">
+            <summary>
+            Registers the resource with the given flags in the scope of the Cuda runtime system.
+            </summary>
+            <param name="resource">The resource to register.</param>
+            <param name="viewFlags">The view flags to use.</param>
+            <param name="cudaGraphicsResource">The resulting graphics resource.</param>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXAccelerator.#ctor(ILGPU.Runtime.Cuda.CudaAccelerator,SharpDX.Direct3D11.Device)">
+            <summary>
+            Constructs a new Cuda DX-interop accelerator.
+            </summary>
+            <param name="accelerator">The target Cuda accelerator.</param>
+            <param name="d3dDevice">The target DX device.</param>
+        </member>
+        <member name="P:ILGPU.SharpDX.Cuda.CudaDirectXAccelerator.CudaAccelerator">
+            <summary>
+            Returns the assigned Cuda accelerator.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXAccelerator.CreateBuffer``1(SharpDX.Direct3D11.Buffer,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary cref="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateBuffer``1(SharpDX.Direct3D11.Buffer,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXAccelerator.CreateTexture2D(SharpDX.Direct3D11.Texture2D,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary cref="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateTexture2D(SharpDX.Direct3D11.Texture2D,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXAccelerator.CreateMapping(SharpDX.Direct3D11.DeviceContext,ILGPU.SharpDX.DirectXBuffer[])">
+            <summary cref="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateMapping(SharpDX.Direct3D11.DeviceContext,ILGPU.SharpDX.DirectXBuffer[])"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXAccelerator.UnmapBuffers(SharpDX.Direct3D11.DeviceContext,ILGPU.SharpDX.DirectXBuffer[])">
+            <summary cref="M:ILGPU.SharpDX.DirectXInteropAccelerator.UnmapBuffers(SharpDX.Direct3D11.DeviceContext,ILGPU.SharpDX.DirectXBuffer[])"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXAccelerator.Dispose(System.Boolean)">
+            <summary cref="M:ILGPU.Util.DisposeBase.Dispose(System.Boolean)"/>
+        </member>
+        <member name="T:ILGPU.SharpDX.Cuda.CudaDirectXBuffer`1">
+            <summary>
+            Represents a DX-compatible Cuda buffer.
+            </summary>
+            <typeparam name="T">The element type.</typeparam>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXBuffer`1.#ctor(ILGPU.Runtime.Cuda.CudaAccelerator,SharpDX.Direct3D11.Device,SharpDX.Direct3D11.Buffer,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary>
+            Constructs a new Cuda buffer.
+            </summary>
+            <param name="accelerator">The target accelerator.</param>
+            <param name="d3dDevice">The target DX device.</param>
+            <param name="buffer">The target DX buffer.</param>
+            <param name="bufferFlags">The buffer flags.</param>
+            <param name="viewFlags">The used view flags</param>
+        </member>
+        <member name="P:ILGPU.SharpDX.Cuda.CudaDirectXBuffer`1.CudaAccelerator">
+            <summary>
+            Returns the associated Cuda accelerator.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.Cuda.CudaDirectXBuffer`1.CudaGraphicsResource">
+            <summary>
+            Returns the native handle to the associated Cuda graphics resource.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXBuffer`1.OnMap(SharpDX.Direct3D11.DeviceContext)">
+            <summary cref="M:ILGPU.SharpDX.DirectXBuffer.OnMap(SharpDX.Direct3D11.DeviceContext)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXBuffer`1.OnUnmap(SharpDX.Direct3D11.DeviceContext)">
+            <summary cref="M:ILGPU.SharpDX.DirectXBuffer.OnUnmap(SharpDX.Direct3D11.DeviceContext)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXBuffer`1.Dispose(System.Boolean)">
+            <summary cref="M:ILGPU.SharpDX.DirectXBuffer`1.Dispose(System.Boolean)"/>
+        </member>
+        <member name="T:ILGPU.SharpDX.Cuda.CudaDirectXTexture2D">
+            <summary>
+            Represents a DX-compatible Cuda texture.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXTexture2D.#ctor(ILGPU.Runtime.Cuda.CudaAccelerator,SharpDX.Direct3D11.Device,SharpDX.Direct3D11.Texture2D,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary>
+            Constructs a new Cuda texture 2D.
+            </summary>
+            <param name="accelerator">The target accelerator.</param>
+            <param name="d3dDevice">The target DX device.</param>
+            <param name="texture">The target DX texture.</param>
+            <param name="bufferFlags">The used buffer flags.</param>
+            <param name="viewFlags">The used view flags.</param>
+        </member>
+        <member name="P:ILGPU.SharpDX.Cuda.CudaDirectXTexture2D.CudaAccelerator">
+            <summary>
+            Returns the associated Cuda accelerator.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.Cuda.CudaDirectXTexture2D.CudaGraphicsResource">
+            <summary>
+            Returns the native handle to the associated Cuda graphics resource.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXTexture2D.OnMap(SharpDX.Direct3D11.DeviceContext)">
+            <summary cref="M:ILGPU.SharpDX.DirectXBuffer.OnMap(SharpDX.Direct3D11.DeviceContext)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXTexture2D.OnUnmap(SharpDX.Direct3D11.DeviceContext)">
+            <summary cref="M:ILGPU.SharpDX.DirectXBuffer.OnUnmap(SharpDX.Direct3D11.DeviceContext)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.Cuda.CudaDirectXTexture2D.Dispose(System.Boolean)">
+            <summary cref="M:ILGPU.SharpDX.DirectXBuffer`1.Dispose(System.Boolean)"/>
+        </member>
+        <member name="T:ILGPU.SharpDX.Cuda.ICudaDirectXBuffer">
+            <summary>
+            Represents an abstract buffer for Cuda-DX interop.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.Cuda.ICudaDirectXBuffer.CudaAccelerator">
+            <summary>
+            Returns the associated Cuda accelerator.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.Cuda.ICudaDirectXBuffer.CudaGraphicsResource">
+            <summary>
+            Returns the native handle to the associated Cuda graphics resource.
+            </summary>
+        </member>
+        <member name="T:ILGPU.SharpDX.DeviceExtensions">
+            <summary>
+            ILGPU-specific extensions for DX devices.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.DeviceExtensions.CreateAssociatedAccelerator(SharpDX.Direct3D11.Device,ILGPU.Context,ILGPU.Runtime.AcceleratorType)">
+            <summary>
+            Creates an associated accelerator of the given type.
+            </summary>
+            <param name="device">The source DX device</param>
+            <param name="context">The ILGPU context DX device</param>
+            <param name="type">The type of the accelerator to create.</param>
+            <returns>The created accelerator.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DeviceExtensions.CreateAssociatedCPUAccelerator(SharpDX.Direct3D11.Device,ILGPU.Context,System.Int32)">
+            <summary>
+            Creates an associated accelerator of the given type.
+            </summary>
+            <param name="device">The source DX device</param>
+            <param name="context">The ILGPU context DX device</param>
+            <param name="numThreads">The number of CPU threads.</param>
+            <returns>The created accelerator.</returns>
+        </member>
+        <member name="T:ILGPU.SharpDX.DirectXBuffer">
+            <summary>
+            Represents an abstract interop buffer for DX interop.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBuffer.#ctor(ILGPU.Runtime.Accelerator,SharpDX.Direct3D11.Device,System.Int32,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary>
+            Constructs a new buffer for DX interop.
+            </summary>
+            <param name="accelerator">The target accelerator.</param>
+            <param name="d3dDevice">The target DX device.</param>
+            <param name="numElements">The number of elements.</param>
+            <param name="bufferFlags">The buffer flags.</param>
+            <param name="viewFlags">The registration flags.</param>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXBuffer.D3DDevice">
+            <summary>
+            Returns the associated device.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXBuffer.Resource">
+            <summary>
+            The underlying DX resource (a buffer or a texture, for instance).
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXBuffer.ResourceView">
+            <summary>
+            Returns the resource view of this buffer.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXBuffer.UnorderedAccessView">
+            <summary>
+            Returns the unordered-access view of this buffer.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXBuffer.ViewFlags">
+            <summary>
+            Returns the used view flags.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXBuffer.BufferFlags">
+            <summary>
+            Returns the used buffer flags.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXBuffer.IsMapped">
+            <summary>
+            Returns true iff the resource is currently mapped.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXBuffer.Length">
+            <summary>
+            Returns the number of elements.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBuffer.MapBuffer(SharpDX.Direct3D11.DeviceContext)">
+            <summary>
+            Maps the current buffer.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBuffer.OnMap(SharpDX.Direct3D11.DeviceContext)">
+            <summary>
+            Creates a new mapping for this buffer and returns the
+            accessible pointer for data access.
+            </summary>
+            <returns>The available access pointer.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBuffer.UnmapBuffer(SharpDX.Direct3D11.DeviceContext)">
+            <summary>
+            Unmaps the current buffer.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBuffer.OnUnmap(SharpDX.Direct3D11.DeviceContext)">
+            <summary>
+            Disposes a previously performed mapping.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBuffer.GetAsRawArray(ILGPU.Runtime.AcceleratorStream,ILGPU.Index,ILGPU.Index)">
+            <summary cref="M:ILGPU.Runtime.ArrayViewSource.GetAsRawArray(ILGPU.Runtime.AcceleratorStream,ILGPU.Index,ILGPU.Index)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBuffer.GetAsRawArray(ILGPU.Runtime.AcceleratorStream)">
+            <summary cref="M:ILGPU.Runtime.IMemoryBuffer.GetAsRawArray(ILGPU.Runtime.AcceleratorStream)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBuffer.MemSetToZero(ILGPU.Runtime.AcceleratorStream)">
+            <summary cref="M:ILGPU.Runtime.IMemoryBuffer.MemSetToZero(ILGPU.Runtime.AcceleratorStream)"/>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBuffer.Dispose(System.Boolean)">
+            <summary cref="M:ILGPU.Util.DisposeBase.Dispose(System.Boolean)"/>
+        </member>
+        <member name="T:ILGPU.SharpDX.DirectXBuffer`1">
+            <summary>
+            Represents an abstract interop buffer for elements of type T for DX interop.
+            </summary>
+            <typeparam name="T">The element type.</typeparam>
+        </member>
+        <member name="F:ILGPU.SharpDX.DirectXBuffer`1.ElementSize">
+            <summary>
+            Represents the native size of a single element.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBuffer`1.#ctor(ILGPU.Runtime.Accelerator,SharpDX.Direct3D11.Device,SharpDX.Direct3D11.Buffer,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary>
+            Constructs a new buffer for DX interop.
+            </summary>
+            <param name="accelerator">The target accelerator.</param>
+            <param name="d3dDevice">The target DX device.</param>
+            <param name="buffer">The target DX buffer.</param>
+            <param name="bufferFlags">The buffer flags.</param>
+            <param name="viewFlags">The registration flags.</param>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXBuffer`1.Buffer">
+            <summary>
+            Returns the underlying DX buffer.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXBuffer`1.Resource">
+            <summary cref="P:ILGPU.SharpDX.DirectXBuffer.Resource"/>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXBuffer`1.View">
+            <summary>
+            Returns an ILGPU view for accessing this buffer in a mapped context.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBuffer`1.CopyFrom(SharpDX.Direct3D11.DeviceContext,`0[])">
+            <summary>
+            Copies data from the given array to the buffer.
+            </summary>
+            <param name="context">The device context to use.</param>
+            <param name="data">The data to copy.</param>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBuffer`1.Dispose(System.Boolean)">
+            <summary cref="M:ILGPU.Util.DisposeBase.Dispose(System.Boolean)"/>
+        </member>
+        <member name="T:ILGPU.SharpDX.DirectXBufferFlags">
+            <summary>
+            Represents flags of a <see cref="T:ILGPU.SharpDX.DirectXBuffer"/>.
+            </summary>
+        </member>
+        <member name="F:ILGPU.SharpDX.DirectXBufferFlags.None">
+            <summary>
+            The default buffer flags. The referenced DX resource
+            will not be disposed automatically.
+            </summary>
+        </member>
+        <member name="F:ILGPU.SharpDX.DirectXBufferFlags.DisposeBuffer">
+            <summary>
+            The referenced DX resource will be disposed automatically.
+            </summary>
+        </member>
+        <member name="T:ILGPU.SharpDX.DirectXBufferMapping">
+            <summary>
+            Represents a set of mapped buffers.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXBufferMapping.Accelerator">
+            <summary>
+            Returns the associated DX-interop accelerator.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXBufferMapping.Context">
+            <summary>
+            Returns the associated DirectX device context.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXBufferMapping.Buffers">
+            <summary>
+            Returns the mapped buffers.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBufferMapping.Unmap">
+            <summary>
+            Unmaps the mapped buffers.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBufferMapping.Equals(ILGPU.SharpDX.DirectXBufferMapping)">
+            <summary>
+            Returns true iff the given mapping is equal to the current mapping.
+            </summary>
+            <param name="other">The other mapping.</param>
+            <returns>True, iff the given mapping is equal to the current mapping.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBufferMapping.Equals(System.Object)">
+            <summary>
+            Returns true iff the given object is equal to the current mapping.
+            </summary>
+            <param name="obj">The other object.</param>
+            <returns>True, iff the given object is equal to the current mapping.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBufferMapping.GetHashCode">
+            <summary>
+            Returns the hash code of this mapping.
+            </summary>
+            <returns>The hash code of this mapping.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBufferMapping.ToString">
+            <summary>
+            Returns the string representation of this mapping.
+            </summary>
+            <returns>The string representation of this mapping.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBufferMapping.op_Equality(ILGPU.SharpDX.DirectXBufferMapping,ILGPU.SharpDX.DirectXBufferMapping)">
+            <summary>
+            Returns true iff the first and second mapping are the same.
+            </summary>
+            <param name="first">The first object.</param>
+            <param name="second">The second object.</param>
+            <returns>True, iff the first and second mapping are the same.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBufferMapping.op_Inequality(ILGPU.SharpDX.DirectXBufferMapping,ILGPU.SharpDX.DirectXBufferMapping)">
+            <summary>
+            Returns true iff the first and second mapping are not the same.
+            </summary>
+            <param name="first">The first object.</param>
+            <param name="second">The second object.</param>
+            <returns>True, iff the first and second mapping are not the same.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXBufferMapping.Dispose">
+            <summary>
+            Unmaps the mapped buffers.
+            </summary>
+        </member>
+        <member name="T:ILGPU.SharpDX.DirectXInteropAccelerator">
+            <summary>
+            Represents an abstract accelerator for DX interop.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.#ctor(ILGPU.Runtime.Accelerator,SharpDX.Direct3D11.Device)">
+            <summary>
+            Constructs a new DX-interop accelerator.
+            </summary>
+            <param name="accelerator">The target accelerator.</param>
+            <param name="d3dDevice">The target DX device.</param>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXInteropAccelerator.Accelerator">
+            <summary>
+            Returns the associated accelerator.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXInteropAccelerator.AcceleratorType">
+            <summary>
+            Returns the type of the associated accelerator.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXInteropAccelerator.D3DDevice">
+            <summary>
+            Returns the associated DX device.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateDXBuffer``1(System.Int32)">
+            <summary>
+            Creates a DX buffer for interop.
+            </summary>
+            <typeparam name="T">The element type.</typeparam>
+            <param name="numElements">The number of elements.</param>
+            <returns>The created DX buffer.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateDXBuffer(System.Int32,System.Int32)">
+            <summary>
+            Creates a DX buffer for interop.
+            </summary>
+            <param name="numElements">The number of elements.</param>
+            <param name="elementSize">The size of a single element.</param>
+            <returns>The created DX buffer.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateBuffer``1(System.Int32)">
+            <summary>
+            Creates a DX-compatible buffer for processing.
+            </summary>
+            <typeparam name="T">The element type of the buffer.</typeparam>
+            <param name="numElements">The number of elements in the buffer.</param>
+            <returns>The created DX-compatible buffer.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateBuffer``1(System.Int32,ILGPU.SharpDX.DirectXBufferFlags)">
+            <summary>
+            Creates a DX-compatible buffer for processing.
+            </summary>
+            <typeparam name="T">The element type of the buffer.</typeparam>
+            <param name="numElements">The number of elements in the buffer.</param>
+            <param name="bufferFlags">The buffer flags to use.</param>
+            <returns>The created DX-compatible buffer.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateBuffer``1(System.Int32,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary>
+            Creates a DX-compatible buffer for processing.
+            </summary>
+            <typeparam name="T">The element type of the buffer.</typeparam>
+            <param name="numElements">The number of elements in the buffer.</param>
+            <param name="bufferFlags">The buffer flags to use.</param>
+            <param name="viewFlags">The view flags to use.</param>
+            <returns>The created DX-compatible buffer.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateBuffer``1(SharpDX.Direct3D11.Buffer)">
+            <summary>
+            Creates a DX-compatible buffer for processing.
+            </summary>
+            <typeparam name="T">The element type of the buffer.</typeparam>
+            <param name="buffer">The target DX buffer.</param>
+            <returns>The created DX-compatible buffer.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateBuffer``1(SharpDX.Direct3D11.Buffer,ILGPU.SharpDX.DirectXBufferFlags)">
+            <summary>
+            Creates a DX-compatible buffer for processing.
+            </summary>
+            <typeparam name="T">The element type of the buffer.</typeparam>
+            <param name="buffer">The target DX buffer.</param>
+            <param name="bufferFlags">The buffer flags to use.</param>
+            <returns>The created DX-compatible buffer.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateBuffer``1(SharpDX.Direct3D11.Buffer,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary>
+            Creates a DX-compatible buffer for processing.
+            </summary>
+            <typeparam name="T">The element type of the buffer.</typeparam>
+            <param name="buffer">The target DX buffer.</param>
+            <param name="bufferFlags">The buffer flags to use.</param>
+            <param name="viewFlags">The view flags to use.</param>
+            <returns>The created DX-compatible buffer.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateDXTexture2D(System.Int32,System.Int32,SharpDX.DXGI.Format)">
+            <summary>
+            Creates a DX texture for interop.
+            </summary>
+            <param name="width">The width of the texture.</param>
+            <param name="height">The height of the texture.</param>
+            <param name="format">The format of the texture.</param>
+            <returns>The created DX texture.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateTexture2D(System.Int32,System.Int32,SharpDX.DXGI.Format)">
+            <summary>
+            Creates a new DX-compatible 2D texture for processing.
+            </summary>
+            <param name="width">The width of the texture.</param>
+            <param name="height">The height of the texture.</param>
+            <param name="format">The format of the texture.</param>
+            <returns>The created DX-compatible texture.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateTexture2D(System.Int32,System.Int32,SharpDX.DXGI.Format,ILGPU.SharpDX.DirectXBufferFlags)">
+            <summary>
+            Creates a new DX-compatible 2D texture for processing.
+            </summary>
+            <param name="width">The width of the texture.</param>
+            <param name="height">The height of the texture.</param>
+            <param name="format">The format of the texture.</param>
+            <param name="bufferFlags">The buffer flags to use.</param>
+            <returns>The created DX-compatible texture.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateTexture2D(System.Int32,System.Int32,SharpDX.DXGI.Format,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary>
+            Creates a new DX-compatible 2D texture for processing.
+            </summary>
+            <param name="width">The width of the texture.</param>
+            <param name="height">The height of the texture.</param>
+            <param name="format">The format of the texture.</param>
+            <param name="bufferFlags">The buffer flags to use.</param>
+            <param name="viewFlags">The view flags to use.</param>
+            <returns>The created DX-compatible texture.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateTexture2D(SharpDX.Direct3D11.Texture2D)">
+            <summary>
+            Creates a new DX-compatible 2D texture for processing.
+            </summary>
+            <param name="texture">The target DX texture.</param>
+            <returns>The created DX-compatible texture.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateTexture2D(SharpDX.Direct3D11.Texture2D,ILGPU.SharpDX.DirectXBufferFlags)">
+            <summary>
+            Creates a new DX-compatible 2D texture for processing.
+            </summary>
+            <param name="texture">The target DX texture.</param>
+            <param name="bufferFlags">The buffer flags to use.</param>
+            <returns>The created DX-compatible texture.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateTexture2D(SharpDX.Direct3D11.Texture2D,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary>
+            Creates a new DX-compatible 2D texture for processing.
+            </summary>
+            <param name="texture">The target DX texture.</param>
+            <param name="bufferFlags">The buffer flags to use.</param>
+            <param name="viewFlags">The view flags to use.</param>
+            <returns>The created DX-compatible texture.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.MapBuffers(SharpDX.Direct3D11.DeviceContext,ILGPU.SharpDX.DirectXBuffer[])">
+            <summary>
+            Maps the given buffers for processing.
+            </summary>
+            <param name="context">The device context to use.</param>
+            <param name="buffers">The buffers to map.</param>
+            <returns>A created buffer mapping.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.CreateMapping(SharpDX.Direct3D11.DeviceContext,ILGPU.SharpDX.DirectXBuffer[])">
+            <summary>
+            Maps the given buffers for processing.
+            </summary>
+            <param name="context">The device context to use.</param>
+            <param name="buffers">The buffers to map.</param>
+            <returns>A created buffer mapping.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXInteropAccelerator.UnmapBuffers(SharpDX.Direct3D11.DeviceContext,ILGPU.SharpDX.DirectXBuffer[])">
+            <summary>
+            Unmaps the given mapped buffers.
+            </summary>
+            <param name="context">The device context to use.</param>
+            <param name="buffers">The mapped buffers that have to be unmapped.</param>
+        </member>
+        <member name="T:ILGPU.SharpDX.DirectXTexture2D">
+            <summary>
+            Represents a 2D texture with ILGPU interop.
+            Note that this texture can also be used as render target.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXTexture2D.#ctor(ILGPU.Runtime.Accelerator,SharpDX.Direct3D11.Device,SharpDX.Direct3D11.Texture2D,ILGPU.SharpDX.DirectXBufferFlags,ILGPU.SharpDX.DirectXViewFlags)">
+            <summary>
+            Constructs a new texture 2D with interop capabilities.
+            </summary>
+            <param name="accelerator">The target accelerator.</param>
+            <param name="d3dDevice">The target DX device.</param>
+            <param name="texture">The width.</param>
+            <param name="bufferFlags">The used buffer flags.</param>
+            <param name="viewFlags">The used view flags.</param>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXTexture2D.Texture">
+            <summary>
+            Returns the DirectX texture.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXTexture2D.Resource">
+            <summary cref="P:ILGPU.SharpDX.DirectXBuffer.Resource"/>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXTexture2D.RenderTargetView">
+            <summary>
+            Returns the render-target view.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXTexture2D.Width">
+            <summary>
+            Returns the width of the texture.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXTexture2D.Height">
+            <summary>
+            Returns the height of the texture.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXTexture2D.Size">
+            <summary>
+            Returns the size of the texture as Index2.
+            </summary>
+        </member>
+        <member name="P:ILGPU.SharpDX.DirectXTexture2D.Format">
+            <summary>
+            Returns the DX format of the interop texture.
+            </summary>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXTexture2D.GetLinearView``1">
+            <summary>
+            Returns a linear array view pointing to this texture.
+            </summary>
+            <typeparam name="T">The element type.</typeparam>
+            <returns>The created array view pointing to this texture.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXTexture2D.GetView``1">
+            <summary>
+            Returns an array view pointing to this texture.
+            </summary>
+            <typeparam name="T">The element type.</typeparam>
+            <returns>The created array view pointing to this texture.</returns>
+        </member>
+        <member name="M:ILGPU.SharpDX.DirectXTexture2D.Dispose(System.Boolean)">
+            <summary cref="M:ILGPU.SharpDX.DirectXBuffer.Dispose(System.Boolean)"/>
+        </member>
+        <member name="T:ILGPU.SharpDX.DirectXViewFlags">
+            <summary>
+            Represents general flags for mapped buffers.
+            </summary>
+        </member>
+        <member name="F:ILGPU.SharpDX.DirectXViewFlags.None">
+            <summary>
+            The default flags.
+            </summary>
+        </member>
+        <member name="F:ILGPU.SharpDX.DirectXViewFlags.ReadOnly">
+            <summary>
+            The ILGPU-runtime cannot write to the buffer.
+            </summary>
+        </member>
+        <member name="F:ILGPU.SharpDX.DirectXViewFlags.WriteDiscard">
+            <summary>
+            The ILGPU-runtime cannot read from the buffer.
+            </summary>
+        </member>
+    </members>
+</doc>
