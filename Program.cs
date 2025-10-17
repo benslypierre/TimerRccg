@@ -16,7 +16,16 @@ namespace TimerRccg
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            
+            // Create services
+            var scheduleService = new ScheduleService();
+            var timerService = new TimerService();
+            var screenService = new ScreenService();
+            
+            // Create and wire forms with services
+            var form1 = new Form1(scheduleService, timerService, screenService);
+            
+            Application.Run(form1);
         }
     }
 }

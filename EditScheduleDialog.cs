@@ -27,26 +27,9 @@ namespace TimerRccg
             this.ShowInTaskbar = false;
             this.AcceptButton = okButton;
             this.CancelButton = cancelButton;
-            this.BackColor = Color.FromArgb(24, 32, 72);
-            this.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
-            foreach (Control c in this.Controls)
-            {
-                if (c is Button btn)
-                {
-                    btn.FlatStyle = FlatStyle.Flat;
-                    btn.BackColor = Color.FromArgb(24, 32, 72);
-                    btn.ForeColor = Color.White;
-                    btn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-                    btn.FlatAppearance.BorderSize = 1;
-                    btn.FlatAppearance.BorderColor = Color.White;
-                    btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 54, 112);
-                }
-                if (c is Label lbl)
-                {
-                    lbl.ForeColor = Color.White;
-                }
-            }
-            // Remove logo from EditScheduleDialog (logo only on Form2)
+            
+            // Apply theme
+            Theme.Apply(this);
 
             Label titleLabel = new Label { Text = "Title:", Left = 10, Top = 20, Width = 50 };
             titleTextBox = new TextBox { Left = 70, Top = 18, Width = 200, Text = currentTitle };

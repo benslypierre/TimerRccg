@@ -294,8 +294,16 @@
     <Compile Include="Form4.Designer.cs">
       <DependentUpon>Form4.cs</DependentUpon>
     </Compile>
+    <Compile Include="IScheduleService.cs" />
+    <Compile Include="IScreenService.cs" />
+    <Compile Include="ITimerService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScheduleItem.cs" />
+    <Compile Include="ScheduleService.cs" />
+    <Compile Include="ScreenService.cs" />
+    <Compile Include="Theme.cs" />
+    <Compile Include="TimerService.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

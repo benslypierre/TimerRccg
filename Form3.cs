@@ -8,80 +8,77 @@ namespace TimerRccg
 {
     public partial class Form3 : Form
     {
-        public static Form3 programList;
-        public static string title = "";
-        public static int min = 0;
-        private static int i = 0;
-        public static Form1 main;
-        public static Form2 displayTime;
-        public static List<string> titleList = Form2.titleList;
-        public static List<int> timeList = Form2.timeList;
+        private readonly IScheduleService _scheduleService;
+        private readonly ITimerService _timerService;
+        private readonly IScreenService _screenService;
+        private string _currentTitle = "";
+        private int _currentTime = 0;
 
-        public Form3()
+        public Form3(IScheduleService scheduleService, ITimerService timerService, IScreenService screenService)
         {
+            _scheduleService = scheduleService ?? throw new ArgumentNullException(nameof(scheduleService));
+            _timerService = timerService ?? throw new ArgumentNullException(nameof(timerService));
+            _screenService = screenService ?? throw new ArgumentNullException(nameof(screenService));
+            
             InitializeComponent();
-            programList = this;
-            displayTime = Form2.displayTime;
-            // Theme
-            this.BackColor = Color.FromArgb(24, 32, 72);
-            this.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
-            foreach (Control c in this.Controls)
-            {
-                if (c is Button btn)
-                {
-                    btn.FlatStyle = FlatStyle.Flat;
-                    btn.BackColor = Color.FromArgb(24, 32, 72);
-                    btn.ForeColor = Color.White;
-                    btn.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-                    btn.FlatAppearance.BorderSize = 1;
-                    btn.FlatAppearance.BorderColor = Color.White;
-                    btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(44, 54, 112);
-                }
-                if (c is Label lbl)
-                {
-                    lbl.ForeColor = Color.White;
-                }
-            }
-            // Remove logo from Form3 (logo only on Form2)
+            
+            // Apply theme
+            Theme.Apply(this);
+            Theme.ApplyToAllControls(this);
         }
 
         //Getting the title and time form user and appending to array
         private void idAdd_Click(object sender, EventArgs e)
         {
-            title = idTitle.Text;
-            int minValue;
-            if (!int.TryParse(idTimeRange.Text, out minValue))
+            string title = idTitle.Text;
+            if (!int.TryParse(idTimeRange.Text, out int minValue) || minValue < 0)
             {
                 idTitle.Text = "";
                 idTimeRange.Text = "";
-                MessageBox.Show("Please fill in the minute box");
+                MessageBox.Show("Please enter a valid number of minutes (0 or greater)", "Invalid Input", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                idTimeRange.Focus();
                 return;
             }
-            Form1.Title = idTitle.Text;
-            // Add to lists
-            Form2.titleList.Add(title);
-            Form2.timeList.Add(minValue);
-            if (Form1.main != null)
-                Form1.main.UpdateListBox();
-            idTitle.Text = "";
-            idTimeRange.Text = "";
-            i++;
-            if (i == 10) i = 0;
+            
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                MessageBox.Show("Please enter a title", "Missing Title", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                idTitle.Focus();
+                return;
+            }
+            
+            try
+            {
+                _scheduleService.AddItem(title, minValue);
+                idTitle.Text = "";
+                idTimeRange.Text = "";
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         //This button is used to signify that we are done with the list.
         private void idDone_Click(object sender, EventArgs e)
         {
             Hide();
-            if (Form1.main != null)
-                Form1.main.showStart();
-            getValues();
+        }
+
+        public void ShowItemForEdit(string title, int time)
+        {
+            _currentTitle = title;
+            _currentTime = time;
+            idTitle.Text = title;
+            idTimeRange.Text = time.ToString();
         }
 
         public void showIndexArray()
         {
-            idTitle.Text = title.ToString();
-            idTimeRange.Text = min.ToString();
+            idTitle.Text = _currentTitle;
+            idTimeRange.Text = _currentTime.ToString();
         }
 
         public void getValues()
@@ -98,34 +95,44 @@ namespace TimerRccg
         //This functions is to update the list if there is any changes the user make.
         private void idUpdate_Click(object sender, EventArgs e)
         {
-            title = idTitle.Text;
-            int minValue;
-            if (!int.TryParse(idTimeRange.Text, out minValue))
+            string title = idTitle.Text;
+            if (!int.TryParse(idTimeRange.Text, out int minValue) || minValue < 0)
             {
                 idTitle.Text = "";
                 idTimeRange.Text = "";
-                MessageBox.Show("Please fill in the minute box");
+                MessageBox.Show("Please enter a valid number of minutes (0 or greater)", "Invalid Input", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                idTimeRange.Focus();
                 return;
             }
+            
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                MessageBox.Show("Please enter a title", "Missing Title", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                idTitle.Focus();
+                return;
+            }
+            
             try
             {
-                int selectedIndex = Form1.main.idListBox.SelectedIndex;
-                if (selectedIndex >= 0 && selectedIndex < Form2.titleList.Count && Form1.main != null && Form1.main.idListBox.Items.Count > selectedIndex)
+                // Find the item to update by matching title and time
+                for (int i = 0; i < _scheduleService.ScheduleItems.Count; i++)
                 {
-                    // Update the data lists
-                    Form2.titleList[selectedIndex] = title;
-                    Form2.timeList[selectedIndex] = minValue;
-                    // Update the ListBox item
-                    Form1.main.idListBox.Items[selectedIndex] = title + " - Time :- " + minValue + " mins";
+                    var item = _scheduleService.ScheduleItems[i];
+                    if (item.Title == _currentTitle && item.TimeInMinutes == _currentTime)
+                    {
+                        _scheduleService.EditItem(i, title, minValue);
+                        break;
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Please select a valid event to update.");
-                }
+                
+                _currentTitle = title;
+                _currentTime = minValue;
             }
-            catch (Exception ex)
+            catch (ArgumentException ex)
             {
-                MessageBox.Show("Error updating event: " + ex.Message);
+                MessageBox.Show(ex.Message, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

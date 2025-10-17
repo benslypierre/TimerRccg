@@ -8,28 +8,11 @@ namespace TimerRccg
 
     public partial  class Form2 : Form
     {
-        public static int min = 0;
-        public static int sec = 0;
-        //Creating an array to get both title and time for each program.
-        public static List<string> titleList = new List<string>();
-        public static List<int> timeList = new List<int>();
-        public static Form2 displayTime;
-        public static int i = 0;
-        public static string Mtitle;
-        public static bool isVisble = true;
-        public static Form1 main;
-        public static Form3 programList = new Form3();
-
-        public static string[] title
-        {
-            get { return titleList.ToArray(); }
-            set { titleList = new List<string>(value); }
-        }
-        public static int[] time
-        {
-            get { return timeList.ToArray(); }
-            set { timeList = new List<int>(value); }
-        }
+        private readonly ITimerService _timerService;
+        private readonly IScheduleService _scheduleService;
+        private readonly IScreenService _screenService;
+        private bool _isBlinking = false;
+        private Color _originalTimerColor = Color.White;
 
         private static Form2 instance; // Singleton instance
 
@@ -40,10 +23,24 @@ namespace TimerRccg
             {
                 if (instance == null || instance.IsDisposed)
                 {
-                    instance = new Form2();
+                    // Create with default services - these should be injected properly
+                    // This is a fallback - ideally services should be injected
+                    instance = new Form2(new TimerService(), new ScheduleService(), new ScreenService());
                 }
                 return instance;
             }
+        }
+
+        // Method to set the services for the singleton instance
+        public static void SetServices(ITimerService timerService, IScheduleService scheduleService, IScreenService screenService)
+        {
+            if (instance != null && !instance.IsDisposed)
+            {
+                // Dispose the old instance
+                instance.Dispose();
+            }
+            // Create new instance with provided services
+            instance = new Form2(timerService, scheduleService, screenService);
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -55,16 +52,36 @@ namespace TimerRccg
         }
 
 
-        public Form2()
+        public Form2(ITimerService timerService, IScheduleService scheduleService, IScreenService screenService)
         {
+            _timerService = timerService ?? throw new ArgumentNullException(nameof(timerService));
+            _scheduleService = scheduleService ?? throw new ArgumentNullException(nameof(scheduleService));
+            _screenService = screenService ?? throw new ArgumentNullException(nameof(screenService));
+            
             InitializeComponent();
-            // Set dark blue background
-            this.BackColor = Color.FromArgb(24, 32, 72); // Deep blue
-            this.Font = new Font("Segoe UI", 14F, FontStyle.Regular);
+            
+            // Apply theme
+            Theme.Apply(this);
             this.FormBorderStyle = FormBorderStyle.None;
             // Add logo to top center
             PictureBox logo = new PictureBox();
-            logo.Image = Image.FromFile("bethel-logo.png");
+            try
+            {
+                if (System.IO.File.Exists("bethel-logo.png"))
+                {
+                    logo.Image = Image.FromFile("bethel-logo.png");
+                }
+                else
+                {
+                    // Create a placeholder or skip logo if file doesn't exist
+                    logo.BackColor = Color.Transparent;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Could not load logo: {ex.Message}");
+                logo.BackColor = Color.Transparent;
+            }
             logo.SizeMode = PictureBoxSizeMode.Zoom;
             logo.Size = new Size(120, 120);
             logo.Location = new Point((this.Width - logo.Width) / 2, 20);
@@ -90,14 +107,12 @@ namespace TimerRccg
             TimeLabel.Font = new Font("Segoe UI", 18F, FontStyle.Regular);
             TimeLabel.ForeColor = Color.WhiteSmoke;
             TimeLabel.BackColor = Color.Transparent;
-            main = Form1.main;
-            programList= Form3.programList;
-            min = 0;
-            sec= 0;
-            displayTime = this;
             this.WindowState = FormWindowState.Maximized;
             TimeLabel.Visible = true;
-             Console.WriteLine("I am working timeSchedual2");
+            
+            // Subscribe to timer events
+            _timerService.TimerTick += OnTimerTick;
+            _timerService.TimerCompleted += OnTimerCompleted;
            
 
 
@@ -107,11 +122,25 @@ namespace TimerRccg
         // Singleton method to get or recreate the instance
         public static Form2 GetInstance()
         {
-            if (displayTime == null || displayTime.IsDisposed)
+            return Instance;
+        }
+
+        public void ShowOnScreen(int screenIndex, bool maximize = true)
+        {
+            var screens = Screen.AllScreens;
+            if (screenIndex >= 0 && screenIndex < screens.Length)
             {
-                displayTime = new Form2();
+                this.StartPosition = FormStartPosition.Manual;
+                this.Location = screens[screenIndex].WorkingArea.Location;
+                
+                if (maximize)
+                {
+                    this.WindowState = FormWindowState.Maximized;
+                }
+                
+                this.Show();
+                this.BringToFront();
             }
-            return displayTime;
         }
 
 
@@ -135,111 +164,102 @@ namespace TimerRccg
         {
             timer1.Stop();
             timer1.Start();
-            idTimer.Text = min.ToString("D2") + ":" + sec.ToString("D2");
-            
- 
-            
-        }
-        public  void titleUpdate()
-        {
-            idTitle.Text = Mtitle;
-            Console.WriteLine("I am working titleUpdate");
+            idTimer.Text = _timerService.IsCompleted ? "Time Up" : $"{_timerService.Minutes:D2}:{_timerService.Seconds:D2}";
         }
         
-
+        public void titleUpdate()
+        {
+            idTitle.Text = _timerService.Title;
+            Console.WriteLine("I am working titleUpdate");
+        }
 
         public void timeSchedual()
         {
-            if (i < titleList.Count && i < timeList.Count)
+            var currentItem = _scheduleService.GetCurrentItem();
+            if (currentItem != null)
             {
-                main.updateMiniText();
-                idTitle.Text = titleList[i];
-                min = timeList[i];
-                sec = 0;
+                _timerService.Minutes = currentItem.TimeInMinutes;
+                _timerService.Seconds = 0;
+                _timerService.Title = currentItem.Title;
+                _timerService.Start();
+                idTitle.Text = currentItem.Title;
                 update();
-                // Only increment i if moving to the next item elsewhere
             }
             else
             {
                 idTitle.Text = "";
-                min = 0;
-                sec = 0;
+                _timerService.StopAndReset();
                 update();
             }
         }
+        
         public void updateProgram()
         {
-            programList.getValues();
-
+            // This method can be removed or updated as needed
         }
         //This is a looping program that has a delay of 1000ms( 1 sec) and increments the time.
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-           
             DateTime currentTime = DateTime.Now;
             TimeLabel.Text = currentTime.ToString("hh:mm:ss tt");
             
-            // this displays the time.
-            if (Form1.timeUpdate == true)
-            {
-
-                Form1.main.getTime();
-            }
-            else
-            {
-                idTimer.Visible = true;
-            }
-            //This code ensure that the count down is done properly.
-            if (sec == 0)
-            {
-                if (min > 0)
-                {
-                    min--;
-                    sec = 60;
-
-                }
-                else
-                {
-                    idTimer.Text = "Time Up";
-                    
-                }
-            }
-            else
-            {
-                sec--;
-                idTimer.Text = min.ToString("D2") + ":" + sec.ToString("D2");
-            }
-
-
-
-            // this changes the color of the timer when it the time is less than 5 mins
-            if (sec == 0 && min == 0)
-                idTimer.Text = "Time Up";
-            if (min < 5 )
+            // Update timer display from service
+            idTimer.Text = _timerService.IsCompleted ? "Time Up" : $"{_timerService.Minutes:D2}:{_timerService.Seconds:D2}";
+            
+            // Change color when time is low
+            if (_timerService.Minutes < 5)
             {
                 idTimer.ForeColor = Color.Red;
- 
+                
+                // Visual emphasis instead of blinking
+                if (_timerService.Minutes < 1) // Blink only in last minute
+                {
+                    _isBlinking = !_isBlinking;
+                    idTimer.ForeColor = _isBlinking ? Color.Yellow : Color.Red;
+                }
             }
-            else 
+            else
             {
-                idTimer.ForeColor = Color.White;
+                idTimer.ForeColor = _originalTimerColor;
+                _isBlinking = false;
             }
-
-            //This checkes to see if the minutes is less than five and start blinking.
-            if(min < 5)
-            {
-                isVisble = !isVisble;
-                idTimer.Visible = isVisble;
-                  
-            }
-
-
             
+            // Always keep timer visible
+            idTimer.Visible = true;
+        }
 
-            Form1.main.updateMiniText();
-           
+        private void OnTimerTick(object sender, TimerTickEventArgs e)
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new Action(() => OnTimerTick(sender, e)));
+                return;
+            }
+            
+            idTimer.Text = e.DisplayText;
+            idTimer.ForeColor = e.IsLowTime ? Color.Red : _originalTimerColor;
+            
+            // Visual emphasis for low time instead of blinking
+            if (e.IsLowTime && e.Minutes < 1)
+            {
+                _isBlinking = !_isBlinking;
+                idTimer.ForeColor = _isBlinking ? Color.Yellow : Color.Red;
+            }
+        }
 
+        private void OnTimerCompleted(object sender, TimerCompletedEventArgs e)
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new Action(() => OnTimerCompleted(sender, e)));
+                return;
+            }
+            
+            idTimer.Text = "Time Up";
+            idTimer.ForeColor = Color.Red;
+            idTimer.Visible = true;
+            _isBlinking = false;
         }
 
         //This method activates when the Form is loaded.
@@ -292,17 +312,13 @@ namespace TimerRccg
         //Getting the Timer title from form2.
         public string getTitle()
         {
-            if (idTitle.Text == null)
-                idTitle.Text = "Welcome";
-            return idTitle.Text;
+            return _timerService.Title ?? "Welcome";
         }
         
         //Getting the Timer from form2.
         public string getTimer()
         {
-            if (idTimer.Text == null)
-                idTimer.Text = "Set time";
-            return idTimer.Text; 
+            return _timerService.IsCompleted ? "Time Up" : $"{_timerService.Minutes:D2}:{_timerService.Seconds:D2}";
         }
 
         // All this code is to get all the attribute for the font and size of the text.
@@ -343,6 +359,16 @@ namespace TimerRccg
         {
             return idTimer.ForeColor;
         }
+        public void StopAndReset()
+        {
+            timer1.Stop();
+            _timerService.StopAndReset();
+            idTimer.Text = "Time Up";
+            idTimer.ForeColor = _originalTimerColor;
+            idTimer.Visible = true;
+            _isBlinking = false;
+        }
+
         public void Mtimer(string text)
         {
             idTimer.Text = text;
