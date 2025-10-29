@@ -15,6 +15,8 @@ namespace TimerRccg
         void MoveItem(int index, int direction);
         ScheduleItem GetCurrentItem();
         bool HasItems();
+        void SaveSchedule();
+        void LoadSchedule();
     }
 
     public class ScheduleChangedEventArgs : EventArgs

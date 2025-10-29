@@ -1,5 +1,7 @@
 using System;
 using System.ComponentModel;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace TimerRccg
 {
@@ -7,10 +9,12 @@ namespace TimerRccg
     {
         private BindingList<ScheduleItem> _scheduleItems;
         private int _currentIndex = 0;
+        private static readonly string SCHEDULE_FILE_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TimerRccg", "schedule.json");
 
         public ScheduleService()
         {
             _scheduleItems = new BindingList<ScheduleItem>();
+            LoadSchedule();
         }
 
         public BindingList<ScheduleItem> ScheduleItems => _scheduleItems;
@@ -132,6 +136,69 @@ namespace TimerRccg
         protected virtual void OnScheduleChanged()
         {
             ScheduleChanged?.Invoke(this, new ScheduleChangedEventArgs(_currentIndex));
+        }
+
+        public void SaveSchedule()
+        {
+            try
+            {
+                var directory = Path.GetDirectoryName(SCHEDULE_FILE_PATH);
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                var list = new System.Collections.Generic.List<ScheduleItem>(_scheduleItems);
+                var json = JsonConvert.SerializeObject(list, Formatting.Indented);
+                File.WriteAllText(SCHEDULE_FILE_PATH, json);
+            }
+            catch (IOException)
+            {
+                // Intentionally ignore I/O errors in service layer
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Intentionally ignore permission errors
+            }
+            catch (JsonException)
+            {
+                // Intentionally ignore serialization errors
+            }
+        }
+
+        public void LoadSchedule()
+        {
+            try
+            {
+                if (!File.Exists(SCHEDULE_FILE_PATH))
+                {
+                    return;
+                }
+
+                var json = File.ReadAllText(SCHEDULE_FILE_PATH);
+                var list = JsonConvert.DeserializeObject<System.Collections.Generic.List<ScheduleItem>>(json) ?? new System.Collections.Generic.List<ScheduleItem>();
+
+                _scheduleItems.Clear();
+                foreach (var item in list)
+                {
+                    if (item != null)
+                        _scheduleItems.Add(item);
+                }
+
+                OnScheduleChanged();
+            }
+            catch (IOException)
+            {
+                // Ignore corrupt or unreadable files
+            }
+            catch (JsonException)
+            {
+                // Ignore deserialization errors and start fresh
+            }
+            catch (Exception)
+            {
+                // Swallow any unexpected exceptions to avoid crashing on startup
+            }
         }
     }
 }
