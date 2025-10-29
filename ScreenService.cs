@@ -35,16 +35,38 @@ namespace TimerRccg
             
             if (selectedScreen != null)
             {
+                // Force the form to normal state first
+                form.WindowState = FormWindowState.Normal;
                 form.StartPosition = FormStartPosition.Manual;
-                form.Location = selectedScreen.WorkingArea.Location;
+                
+                // Hide the form first to ensure proper repositioning
+                form.Hide();
+                
+                // Set the form to the selected screen's working area
+                form.Bounds = selectedScreen.WorkingArea;
+                
+                // Show the form first
+                form.Show();
                 
                 if (ensureMaximized)
                 {
+                    // Set maximized after showing
                     form.WindowState = FormWindowState.Maximized;
                 }
                 
-                form.Show();
+                // Bring to front and activate
                 form.BringToFront();
+                form.Activate();
+                form.TopMost = true;
+                form.TopMost = false; // This ensures it stays on top but allows interaction
+                
+                // Force refresh to ensure proper display
+                form.Refresh();
+                
+                // Debug output to verify screen positioning
+                System.Diagnostics.Debug.WriteLine($"Form positioned on screen: {selectedScreen.DeviceName}");
+                System.Diagnostics.Debug.WriteLine($"Form bounds: {form.Bounds}");
+                System.Diagnostics.Debug.WriteLine($"Screen bounds: {selectedScreen.WorkingArea}");
             }
         }
 

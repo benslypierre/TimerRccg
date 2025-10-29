@@ -12,6 +12,11 @@ namespace TimerRccg
         private readonly IScheduleService _scheduleService;
         private readonly ITimerService _timerService;
         private readonly IScreenService _screenService;
+		private WebControlServer _webServer;
+        private Timer _overtimeTimer;
+        private int _overtimeSeconds;
+        private bool _isScheduleRunning = false;
+        private int _cachedRemainingScheduleSeconds = 0;
         
         private Form3 scheduler;
         private Form2 displayTime;
@@ -101,6 +106,9 @@ namespace TimerRccg
             Theme.Apply(menuStrip1);
             Theme.Apply(idListBox);
             
+            // Ensure overtime label maintains yellow color after theme application
+            overtimeLabel.ForeColor = Color.Yellow;
+            
             // Set up tooltips
             ToolTip toolTip = new ToolTip();
             toolTip.SetToolTip(idSetTime, "Set the timer for the current event");
@@ -124,7 +132,38 @@ namespace TimerRccg
 
             // Center Title1 and Timer2 in the main panel
             CenterMainDisplay();
+			this.FormClosing += Form1_FormClosing;
+
+			// Start web control server
+			try
+			{
+				_webServer = new WebControlServer(_timerService, _scheduleService, this);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Failed to initialize web server: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+
+            // Initialize overtime timer
+            _overtimeTimer = new Timer();
+            _overtimeTimer.Interval = 1000; // 1 second
+            _overtimeTimer.Tick += OvertimeTimer_Tick;
         }
+
+		protected override void OnLoad(EventArgs e)
+		{
+			base.OnLoad(e);
+			// Ensure handle exists before starting web server
+			var handle = this.Handle;
+			try
+			{
+				_webServer?.Start();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Failed to start web server: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 
         private void ConfigureRightSideLayout()
         {
@@ -245,9 +284,19 @@ namespace TimerRccg
                     idListBox.Width = groupBox2.Width;
             }
 
-            // Anchor Program starter group so it stays at bottom and doesn't overlap
-            if (Program != null)
-                Program.Anchor = AnchorStyles.Bottom;
+			// Anchor Program starter group so it stays at bottom and doesn't overlap
+			if (Program != null)
+				Program.Anchor = AnchorStyles.Bottom;
+
+			// Place Estimated Time group to the right of Program and keep at bottom
+			if (estimatedTimeGroup != null && Program != null)
+			{
+				estimatedTimeGroup.Anchor = AnchorStyles.Bottom;
+				int gap = 50; // Increased gap from 20 to 50 pixels
+				int left = Program.Right + gap;
+				int top = Program.Top + (Program.Height - estimatedTimeGroup.Height) / 2;
+				estimatedTimeGroup.Location = new Point(left, top);
+			}
 
             // Keep right column widths aligned during resize
             this.Resize -= OnFormResizedSyncRight;
@@ -279,6 +328,17 @@ namespace TimerRccg
                 idListBox.Left = groupBox2.Left;
                 idListBox.Width = groupBox2.Width;
             }
+
+			// Keep Estimated Time group positioned to the right of Program
+			if (estimatedTimeGroup != null && Program != null)
+			{
+				int gap = 50; // Increased gap from 20 to 50 pixels
+				estimatedTimeGroup.Left = Program.Right + gap;
+				estimatedTimeGroup.Top = Program.Top + (Program.Height - estimatedTimeGroup.Height) / 2;
+			}
+
+            // Re-center main display elements including overtime label
+            CenterMainDisplay();
         }
 
 
@@ -314,6 +374,14 @@ namespace TimerRccg
                 y = y - Title1.Height - 20; // 20px gap
                 Title1.Location = new Point(x, y);
 
+                // Position overtime label below timer, centered horizontally
+                if (overtimeLabel != null)
+                {
+                    x = (panel1.Width - overtimeLabel.Width) / 2;
+                    y = Timer2.Bottom + 20; // 20px gap below timer
+                    overtimeLabel.Location = new Point(x, y);
+                }
+
                 // Set proper font sizes
                 Timer2.Font = Theme.LargeTimerFont;
                 Title1.Font = Theme.TitleFont;
@@ -328,6 +396,15 @@ namespace TimerRccg
                 return;
             }
             
+            // Handle schedule mutations while running to keep CurrentIndex consistent
+            if (_scheduleService.CurrentIndex >= _scheduleService.ScheduleItems.Count)
+            {
+                _scheduleService.CurrentIndex = Math.Max(0, _scheduleService.ScheduleItems.Count - 1);
+            }
+            
+            // Recompute cached remaining schedule seconds when schedule changes
+            RecomputeCachedRemainingScheduleSeconds();
+            
             // Show start button if there are items
             if (_scheduleService.HasItems())
             {
@@ -339,6 +416,7 @@ namespace TimerRccg
             {
                 idListBox.SelectedIndex = e.ActiveIndex;
             }
+            UpdateEstimatedTime();
         }
 
         private void OnTimerTick(object sender, TimerTickEventArgs e)
@@ -351,6 +429,7 @@ namespace TimerRccg
             
             Timer2.Text = e.DisplayText;
             Timer2.ForeColor = e.IsLowTime ? Color.Red : Theme.TextColor;
+            UpdateEstimatedTime();
         }
 
         private void OnTimerCompleted(object sender, TimerCompletedEventArgs e)
@@ -363,6 +442,14 @@ namespace TimerRccg
             
             Timer2.Text = "Time Up";
             Timer2.ForeColor = Color.Red;
+            
+            // Start overtime tracking
+            _overtimeSeconds = 0;
+            _overtimeTimer.Start();
+            overtimeLabel.Visible = true;
+            overtimeLabel.Text = "Overtime: 00:00";
+            
+            UpdateEstimatedTime();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -377,6 +464,9 @@ namespace TimerRccg
             idExtraMins.Show();
             idAdd.Show();
             idSub.Show();
+
+            // Hide overtime display when manually setting timer
+            StopAndHideOvertime();
 
             // Validate input
             if (!int.TryParse(idgetMin.Text, out int minutes) || minutes < 0)
@@ -403,6 +493,9 @@ namespace TimerRccg
             _timerService.Title = idTitle.Text;
             _timerService.Start();
 
+            // Clear schedule running flag for manual timer mode
+            _isScheduleRunning = false;
+
             // Update Form2 title display
             displayTime.titleUpdate();
 
@@ -419,7 +512,22 @@ namespace TimerRccg
         {
             _timerService.StopAndReset();
             displayTime.Visible = false;
+            
+            // Stop overtime timer, reset counter, and hide overtime label
+            StopAndHideOvertime();
+            
+            // Clear schedule running flag
+            _isScheduleRunning = false;
+            
             UpdateMiniText();
+            if (estimatedTimeGroup != null)
+                estimatedTimeGroup.Visible = false;
+
+            // Hide Change Time controls to restore initial UI state
+            idExtraTime.Hide();
+            idExtraMins.Hide();
+            idAdd.Hide();
+            idSub.Hide();
         }
 
         //This button activates the Third form.
@@ -449,6 +557,12 @@ namespace TimerRccg
                 _timerService.Title = currentItem.Title;
                 _timerService.Start();
                 
+                // Set schedule running flag
+                _isScheduleRunning = true;
+                
+                // Hide overtime display when starting schedule
+                StopAndHideOvertime();
+                
                 // Update Form2 title display
                 displayTime.titleUpdate();
             }
@@ -458,7 +572,18 @@ namespace TimerRccg
 
             // Show and maximize the timer form on the correct screen
             _screenService.ShowOnSelectedScreen(displayTime, true);
+            
+            // Show Change Time controls
+            idExtraTime.Show();
+            idExtraMins.Show();
+            idAdd.Show();
+            idSub.Show();
+            
+            // Recompute cached remaining schedule seconds when starting schedule
+            RecomputeCachedRemainingScheduleSeconds();
+            
             UpdateMiniText();
+            UpdateEstimatedTime();
         }
         public void showStart()
         {
@@ -483,14 +608,21 @@ namespace TimerRccg
                     _timerService.Title = currentItem.Title;
                     _timerService.Start();
                     
+                    // Hide overtime display when moving to next item
+                    StopAndHideOvertime();
+                    
                     // Update Form2 title display
                     displayTime.titleUpdate();
                 }
+                
+                // Recompute cached remaining schedule seconds when index changes
+                RecomputeCachedRemainingScheduleSeconds();
             }
             else
             {
                 MessageBox.Show("This is the last program left.");
             }
+            UpdateEstimatedTime();
         }
 
         private void idPrevious_Click(object sender, EventArgs e)
@@ -507,10 +639,18 @@ namespace TimerRccg
                     _timerService.Title = currentItem.Title;
                     _timerService.Start();
                     
+                    // Hide overtime display when moving to previous item
+                    StopAndHideOvertime();
+                    
                     // Update Form2 title display
                     displayTime.titleUpdate();
                 }
+                
+                // Recompute cached remaining schedule seconds when index changes
+                RecomputeCachedRemainingScheduleSeconds();
+                
                 UpdateMiniText();
+                UpdateEstimatedTime();
             }
             else
             {
@@ -603,8 +743,36 @@ namespace TimerRccg
                     _timerService.Seconds = 0;
                     _timerService.Title = currentItem.Title;
                     _timerService.Start();
+                    
+                    // Set schedule running flag
+                    _isScheduleRunning = true;
+                    
+                    // Hide overtime display when double-clicking schedule item
+                    StopAndHideOvertime();
+
+                    // Update Form2 title display to keep behavior consistent
+                    displayTime.titleUpdate();
+
+                    // Show navigation controls and optionally hide Start like idStart_Click
+                    idNext.Show();
+                    idPrevious.Show();
+                    idStart.Hide();
+                    
+                    // Show and maximize the timer form on the correct screen
+                    _screenService.ShowOnSelectedScreen(displayTime, true);
+                    
+                    // Show Change Time controls
+                    idExtraTime.Show();
+                    idExtraMins.Show();
+                    idAdd.Show();
+                    idSub.Show();
                 }
+                
+                // Recompute cached remaining schedule seconds when starting via double-click
+                RecomputeCachedRemainingScheduleSeconds();
+                
                 UpdateMiniText();
+                UpdateEstimatedTime();
             }
         }
 
@@ -617,6 +785,19 @@ namespace TimerRccg
         {
             Form4 to = new Form4(_screenService);
             to.Show();
+        }
+
+        // Method to refresh screen positioning for Form2
+        public void RefreshScreenPositioning()
+        {
+            if (displayTime != null && !displayTime.IsDisposed)
+            {
+                int selectedScreenIndex = _screenService.GetSelectedScreenIndex();
+                _screenService.ShowOnSelectedScreen(displayTime, true);
+                
+                // Also use Form2's direct method
+                displayTime.ForceRepositionToScreen(selectedScreenIndex);
+            }
         }
 
         private void idExtraTime_TextChanged(object sender, EventArgs e)
@@ -668,6 +849,85 @@ namespace TimerRccg
             Timer2.Text = _timerService.IsCompleted ? "Time Up" : $"{_timerService.Minutes:D2}:{_timerService.Seconds:D2}";
             Timer2.ForeColor = _timerService.Minutes < 5 ? Color.Red : Theme.TextColor;
             Timer2.Visible = true; // Always visible
+        }
+
+        private void RecomputeCachedRemainingScheduleSeconds()
+        {
+            _cachedRemainingScheduleSeconds = 0;
+            
+            // Add remaining items' time in seconds
+            for (int i = _scheduleService.CurrentIndex + 1; i < _scheduleService.ScheduleItems.Count; i++)
+            {
+                _cachedRemainingScheduleSeconds += _scheduleService.ScheduleItems[i].TimeInMinutes * 60;
+            }
+        }
+
+        private void UpdateEstimatedTime()
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new Action(UpdateEstimatedTime));
+                return;
+            }
+
+            if (!_scheduleService.HasItems() || !_timerService.IsRunning)
+            {
+                if (estimatedTimeGroup != null)
+                    estimatedTimeGroup.Visible = false;
+                return;
+            }
+
+            // Guard against invalid CurrentIndex to prevent out-of-range iteration
+            if (_scheduleService.CurrentIndex < 0 || _scheduleService.CurrentIndex >= _scheduleService.ScheduleItems.Count)
+            {
+                if (estimatedTimeGroup != null)
+                    estimatedTimeGroup.Visible = false;
+                return;
+            }
+
+            // Gate estimated panel to schedule mode only - hide during manual timer
+            if (!_isScheduleRunning)
+            {
+                if (estimatedTimeGroup != null)
+                    estimatedTimeGroup.Visible = false;
+                return;
+            }
+
+            // Use cached remaining schedule seconds for performance
+            int totalSeconds = _timerService.Minutes * 60 + _timerService.Seconds + _cachedRemainingScheduleSeconds;
+
+            // Convert totalSeconds to hours and minutes
+            int hours = totalSeconds / 3600;
+            int minutes = (totalSeconds % 3600) / 60;
+            string displayText = $"{hours:D2}:{minutes:D2}";
+
+            if (estimatedTimeLabel != null)
+                estimatedTimeLabel.Text = displayText;
+            if (estimatedTimeGroup != null)
+                estimatedTimeGroup.Visible = true;
+        }
+
+        private void OvertimeTimer_Tick(object sender, EventArgs e)
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new Action(() => OvertimeTimer_Tick(sender, e)));
+                return;
+            }
+
+            _overtimeSeconds++;
+            int minutes = _overtimeSeconds / 60;
+            int seconds = _overtimeSeconds % 60;
+            string displayText = $"Overtime: {minutes:D2}:{seconds:D2}";
+            overtimeLabel.Text = displayText;
+            overtimeLabel.Visible = true;
+        }
+
+        private void StopAndHideOvertime()
+        {
+            _overtimeTimer?.Stop();
+            _overtimeSeconds = 0;
+            if (overtimeLabel != null) overtimeLabel.Visible = false;
         }
 
         private void IdListBox_MouseDown(object sender, MouseEventArgs e)
@@ -724,6 +984,26 @@ namespace TimerRccg
             {
                 _scheduleService.MoveItem(index, 1);
                 idListBox.SelectedIndex = index + 1;
+            }
+        }
+
+		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                // Stop and dispose overtime timer
+                _overtimeTimer?.Stop();
+                _overtimeTimer?.Dispose();
+                
+				_webServer?.Stop();
+                if (_scheduleService.HasItems())
+                {
+                    _scheduleService.SaveSchedule();
+                }
+            }
+            catch
+            {
+                // Do not block closing; optionally log
             }
         }
     }

@@ -107,7 +107,7 @@ namespace TimerRccg
             TimeLabel.Font = new Font("Segoe UI", 18F, FontStyle.Regular);
             TimeLabel.ForeColor = Color.WhiteSmoke;
             TimeLabel.BackColor = Color.Transparent;
-            this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Normal; // Changed from Maximized to Normal
             TimeLabel.Visible = true;
             
             // Subscribe to timer events
@@ -131,7 +131,8 @@ namespace TimerRccg
             if (screenIndex >= 0 && screenIndex < screens.Length)
             {
                 this.StartPosition = FormStartPosition.Manual;
-                this.Location = screens[screenIndex].WorkingArea.Location;
+                this.WindowState = FormWindowState.Normal;
+                this.Bounds = screens[screenIndex].WorkingArea;
                 
                 if (maximize)
                 {
@@ -140,6 +141,22 @@ namespace TimerRccg
                 
                 this.Show();
                 this.BringToFront();
+            }
+        }
+
+        public void ForceRepositionToScreen(int screenIndex)
+        {
+            var screens = Screen.AllScreens;
+            if (screenIndex >= 0 && screenIndex < screens.Length)
+            {
+                this.Hide();
+                this.StartPosition = FormStartPosition.Manual;
+                this.WindowState = FormWindowState.Normal;
+                this.Bounds = screens[screenIndex].WorkingArea;
+                this.WindowState = FormWindowState.Maximized;
+                this.Show();
+                this.BringToFront();
+                this.Activate();
             }
         }
 

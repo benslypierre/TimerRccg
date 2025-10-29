@@ -7,7 +7,7 @@ namespace TimerRccg
     public partial class Form4 : Form
     {
         private readonly IScreenService _screenService;
-        private Form formOnSelectedScreen = Form2.GetInstance();
+        private Form formOnSelectedScreen;
         public Screen[] screens; 
 
         public Form4(IScreenService screenService)
@@ -50,7 +50,28 @@ namespace TimerRccg
                 }
                 
                 _screenService.SetSelectedScreenIndex(screenIndex);
+                
+                // Debug output
+                System.Diagnostics.Debug.WriteLine($"Selected screen index: {screenIndex}");
+                System.Diagnostics.Debug.WriteLine($"Available screens: {screens.Length}");
+                if (screenIndex < screens.Length)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Target screen: {screens[screenIndex].DeviceName}");
+                    System.Diagnostics.Debug.WriteLine($"Target screen bounds: {screens[screenIndex].WorkingArea}");
+                }
+                
+                // Get the current Form2 instance and force repositioning
+                formOnSelectedScreen = Form2.Instance;
+                
+                // Use both the screen service and direct Form2 method for redundancy
                 _screenService.ShowOnSelectedScreen(formOnSelectedScreen, true);
+                
+                // Also call Form2's direct method as backup
+                if (formOnSelectedScreen is Form2 form2)
+                {
+                    form2.ForceRepositionToScreen(screenIndex);
+                }
+                
                 this.Close();
             }
             catch (ObjectDisposedException a)

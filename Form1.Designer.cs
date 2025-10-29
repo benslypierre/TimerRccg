@@ -54,11 +54,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Timer2 = new System.Windows.Forms.Label();
             this.Title1 = new System.Windows.Forms.Label();
+            this.overtimeLabel = new System.Windows.Forms.Label();
+            this.estimatedTimeGroup = new System.Windows.Forms.GroupBox();
+            this.estimatedTimeLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Program.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.estimatedTimeGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -285,10 +289,34 @@
             this.Program.TabStop = false;
             this.Program.Text = "Program Stater";
             // 
+            // estimatedTimeGroup
+            // 
+            this.estimatedTimeGroup.Controls.Add(this.estimatedTimeLabel);
+            this.estimatedTimeGroup.Location = new System.Drawing.Point(650, 580);
+            this.estimatedTimeGroup.Name = "estimatedTimeGroup";
+            this.estimatedTimeGroup.Size = new System.Drawing.Size(200, 80);
+            this.estimatedTimeGroup.TabIndex = 22;
+            this.estimatedTimeGroup.TabStop = false;
+            this.estimatedTimeGroup.Text = "Estimated Time";
+            this.estimatedTimeGroup.Visible = false;
+            // 
+            // estimatedTimeLabel
+            // 
+            this.estimatedTimeLabel.AutoSize = false;
+            this.estimatedTimeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.estimatedTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold);
+            this.estimatedTimeLabel.Location = new System.Drawing.Point(3, 16);
+            this.estimatedTimeLabel.Name = "estimatedTimeLabel";
+            this.estimatedTimeLabel.Size = new System.Drawing.Size(194, 61);
+            this.estimatedTimeLabel.TabIndex = 0;
+            this.estimatedTimeLabel.Text = "00:00";
+            this.estimatedTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.Timer2);
             this.panel1.Controls.Add(this.Title1);
+            this.panel1.Controls.Add(this.overtimeLabel);
             this.panel1.Location = new System.Drawing.Point(12, 54);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(868, 493);
@@ -315,6 +343,19 @@
             this.Title1.Text = "Title";
             this.Title1.Click += new System.EventHandler(this.Title1_Click);
             // 
+            // overtimeLabel
+            // 
+            this.overtimeLabel.AutoSize = true;
+            this.overtimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.overtimeLabel.ForeColor = System.Drawing.Color.Yellow;
+            this.overtimeLabel.Location = new System.Drawing.Point(280, 290);
+            this.overtimeLabel.Name = "overtimeLabel";
+            this.overtimeLabel.Size = new System.Drawing.Size(200, 31);
+            this.overtimeLabel.TabIndex = 2;
+            this.overtimeLabel.Text = "Overtime: 00:00";
+            this.overtimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.overtimeLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AcceptButton = this.idSetTime;
@@ -322,6 +363,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1220, 729);
+            this.Controls.Add(this.estimatedTimeGroup);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Program);
             this.Controls.Add(this.groupBox2);
@@ -342,6 +384,7 @@
             this.Program.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.estimatedTimeGroup.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,6 +417,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label Title1;
         private System.Windows.Forms.Label Timer2;
+        private System.Windows.Forms.Label overtimeLabel;
+        private System.Windows.Forms.GroupBox estimatedTimeGroup;
+        private System.Windows.Forms.Label estimatedTimeLabel;
     }
 }
 
