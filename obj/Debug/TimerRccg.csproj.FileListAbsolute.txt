@@ -390,6 +390,8 @@ C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\HelixToolkit.Wpf.Sh
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\ILGPU.dll
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\ILGPU.SharpDX.dll
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Newtonsoft.Json.Bson.dll
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Animation.dll
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.D3DCompiler.dll
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Desktop.dll
@@ -429,6 +431,8 @@ C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\ILGPU.pdb
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\ILGPU.xml
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\ILGPU.SharpDX.xml
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Newtonsoft.Json.Bson.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Newtonsoft.Json.Bson.xml
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.pdb
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Animation.pdb
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\SharpDX.Animation.xml
@@ -476,6 +480,7 @@ C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Reflection.M
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Reflection.TypeExtensions.xml
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\WindowsDisplayAPI.xml
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.csproj.AssemblyReference.cache
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.Form1.resources
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Debug\TimerRccg.Form2.resources
