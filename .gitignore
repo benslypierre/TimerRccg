@@ -1,0 +1,15 @@
+# Build outputs
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+*.cache
+*.log
+
+# Visual Studio / MSBuild user state
+.vs/
+*.user
+*.suo
+*.userosscache

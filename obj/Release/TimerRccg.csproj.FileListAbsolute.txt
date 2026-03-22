@@ -1,8 +1,5 @@
-C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Release\TimerRccg.exe.config
-C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Release\TimerRccg.exe.manifest
-C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Release\TimerRccg.application
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Release\TimerRccg.exe
-C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Release\TimerRccg.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Release\TimerRccg.exe.config
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Release\Cauldron.Core.dll
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Release\Cauldron.Direct3D9.dll
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Release\Cauldron.Game.dll
@@ -117,8 +114,8 @@ C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Release\TimerRccg.Form4.r
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Release\TimerRccg.Properties.Resources.resources
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Release\TimerRccg.csproj.GenerateResource.cache
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Release\TimerRccg.csproj.CoreCompileInputs.cache
-C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Release\TimerRccg.exe.manifest
-C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Release\TimerRccg.application
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Release\TimerRccg.csproj.Up2Date
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Release\TimerRccg.exe
 C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Release\TimerRccg.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\bin\Release\TimerRccg.pdb
+C:\Users\Owner\Downloads\TimerRccg-fixed\TimerRccg\obj\Release\TimerRccg.exe.config

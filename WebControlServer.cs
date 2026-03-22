@@ -1,10 +1,12 @@
 using System;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace TimerRccg
 {
@@ -84,6 +86,21 @@ namespace TimerRccg
 						break;
 					case "/previous" when request.HttpMethod.Equals("POST", StringComparison.OrdinalIgnoreCase):
 						HandlePreviousRequest(response);
+						break;
+					case "/timer/add" when request.HttpMethod.Equals("POST", StringComparison.OrdinalIgnoreCase):
+						HandleTimerAddRequest(request, response);
+						break;
+					case "/timer/subtract" when request.HttpMethod.Equals("POST", StringComparison.OrdinalIgnoreCase):
+						HandleTimerSubtractRequest(request, response);
+						break;
+					case "/queue/add" when request.HttpMethod.Equals("POST", StringComparison.OrdinalIgnoreCase):
+						HandleQueueAddRequest(request, response);
+						break;
+					case "/queue/remove" when request.HttpMethod.Equals("POST", StringComparison.OrdinalIgnoreCase):
+						HandleQueueRemoveRequest(request, response);
+						break;
+					case "/queue/move" when request.HttpMethod.Equals("POST", StringComparison.OrdinalIgnoreCase):
+						HandleQueueMoveRequest(request, response);
 						break;
 					default:
 						response.StatusCode = 404;
@@ -165,9 +182,8 @@ namespace TimerRccg
   .header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
   .title { font-size:20px; font-weight:600; color:var(--muted); }
   .time { font-size:48px; font-weight:800; letter-spacing:1px; }
-  .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px; }
-  @media (max-width: 700px) { .grid { grid-template-columns:1fr; } }
-  .queue { max-height:320px; overflow:auto; }
+  .queue-section { margin-top:16px; width:100%; }
+  .queue { max-height:400px; overflow:auto; }
   ul { list-style:none; padding:0; margin:0; }
   li { padding:10px 12px; border-bottom:1px solid #1f2937; display:flex; justify-content:space-between; gap:12px; }
   .controls { display:flex; gap:12px; margin-top:12px; }
@@ -176,7 +192,18 @@ namespace TimerRccg
   .btn:hover { background:#374151; }
   .btn-next { background:var(--accent); color:#052e16; }
   .btn-prev { background:#3b82f6; color:#00122a; }
+  .btn-danger { background:#7f1d1d; color:#fecaca; }
+  .btn-danger:hover { background:#991b1b; }
+  .btn-small { padding:8px 10px; font-size:14px; }
   .error { color:var(--danger); margin-top:8px; min-height:24px; }
+  .toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:12px; padding:12px; background:#0b1220; border-radius:8px; border:1px solid #1f2937; }
+  .toolbar label { color:var(--muted); font-size:14px; }
+  .toolbar input[type=""number""], .toolbar input[type=""text""] { background:#111827; border:1px solid #374151; color:var(--fg); border-radius:6px; padding:8px 10px; font-size:15px; width:72px; }
+  .toolbar input[type=""text""] { flex:1; min-width:140px; }
+  .queue li { align-items:center; gap:8px; flex-wrap:wrap; }
+  .queue .qi-time { color:var(--muted); min-width:72px; text-align:right; font-variant-numeric:tabular-nums; }
+  .queue-actions { display:flex; gap:4px; align-items:center; flex-shrink:0; }
+  button:disabled { opacity:0.35; cursor:not-allowed; }
 </style>
 </head>
 <body>
@@ -193,17 +220,28 @@ namespace TimerRccg
         <button id=""prev"" class=""btn btn-prev"">Previous</button>
         <button id=""next"" class=""btn btn-next"">Next</button>
       </div>
+      <div class=""toolbar"">
+        <label for=""adjMin"">Adjust current timer (min)</label>
+        <input id=""adjMin"" type=""number"" min=""1"" value=""1"" />
+        <button type=""button"" id=""adjAdd"" class=""btn btn-next btn-small"">Add</button>
+        <button type=""button"" id=""adjSub"" class=""btn btn-prev btn-small"">Subtract</button>
+        <button type=""button"" class=""btn btn-small"" data-add=""1"">+1</button>
+        <button type=""button"" class=""btn btn-small"" data-add=""5"">+5</button>
+        <button type=""button"" class=""btn btn-small"" data-sub=""1"">−1</button>
+        <button type=""button"" class=""btn btn-small"" data-sub=""5"">−5</button>
+      </div>
+      <div class=""toolbar"">
+        <label>Add to queue</label>
+        <input id=""newTitle"" type=""text"" placeholder=""Title"" autocomplete=""off"" />
+        <input id=""newMins"" type=""number"" min=""0"" value=""5"" />
+        <span style=""color:var(--muted)"">min</span>
+        <button type=""button"" id=""addQueue"" class=""btn btn-next btn-small"">Add item</button>
+      </div>
       <div id=""error"" class=""error""></div>
-      <div class=""grid"">
-        <div class=""card"">
-          <div class=""title"">Queue</div>
-          <div class=""queue"">
-            <ul id=""queue""></ul>
-          </div>
-        </div>
-        <div class=""card"">
-          <div class=""title"">Status</div>
-          <div id=""status""></div>
+      <div class=""card queue-section"">
+        <div class=""title"">Queue</div>
+        <div class=""queue"">
+          <ul id=""queue""></ul>
         </div>
       </div>
     </div>
@@ -220,14 +258,25 @@ async function fetchStatus() {
     document.getElementById('time').textContent = s.timer.isCompleted ? 'Time Up' : `${mm}:${ss}`;
     const q = document.getElementById('queue');
     q.innerHTML = '';
-    (s.queue || []).forEach((item, idx) => {
+    const list = s.queue || [];
+    const lastIdx = list.length - 1;
+    list.forEach((item) => {
       const li = document.createElement('li');
-      const left = document.createElement('div'); left.textContent = item.title;
-      const right = document.createElement('div'); right.textContent = `${item.timeInMinutes} min`;
-      if (idx === s.currentIndex) { li.style.background = '#0b1220'; }
-      li.appendChild(left); li.appendChild(right); q.appendChild(li);
+      const left = document.createElement('div'); left.style.flex = '1'; left.style.minWidth = '120px'; left.textContent = item.title;
+      const mid = document.createElement('div'); mid.className = 'qi-time'; mid.textContent = item.timeInMinutes + ' min';
+      const actions = document.createElement('div'); actions.className = 'queue-actions';
+      const up = document.createElement('button'); up.type = 'button'; up.className = 'btn btn-small'; up.textContent = '\u2191'; up.title = 'Move up';
+      const down = document.createElement('button'); down.type = 'button'; down.className = 'btn btn-small'; down.textContent = '\u2193'; down.title = 'Move down';
+      if (item.index === 0) up.disabled = true;
+      if (item.index === lastIdx) down.disabled = true;
+      up.addEventListener('click', (ev) => { ev.preventDefault(); postJson('/queue/move', JSON.stringify({ index: item.index, direction: -1 })); });
+      down.addEventListener('click', (ev) => { ev.preventDefault(); postJson('/queue/move', JSON.stringify({ index: item.index, direction: 1 })); });
+      actions.appendChild(up); actions.appendChild(down);
+      const rm = document.createElement('button'); rm.type = 'button'; rm.className = 'btn btn-danger btn-small'; rm.textContent = 'Remove';
+      rm.addEventListener('click', (ev) => { ev.preventDefault(); postJson('/queue/remove', JSON.stringify({ index: item.index })); });
+      if (item.index === s.currentIndex) { li.style.background = '#0b1220'; }
+      li.appendChild(left); li.appendChild(mid); li.appendChild(actions); li.appendChild(rm); q.appendChild(li);
     });
-    document.getElementById('status').textContent = `Running: ${s.timer.isRunning}`;
     document.getElementById('error').textContent = '';
   } catch (e) {
     document.getElementById('error').textContent = e.message;
@@ -245,8 +294,36 @@ async function post(path) {
   }
 }
 
+async function postJson(url, jsonBody) {
+  try {
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: jsonBody });
+    const j = await r.json();
+    if (!j.success) throw new Error(j.message || 'Action failed');
+    await fetchStatus();
+  } catch (e) {
+    document.getElementById('error').textContent = e.message;
+  }
+}
+
+function readAdjMinutes() {
+  const v = parseInt(document.getElementById('adjMin').value, 10);
+  return Number.isFinite(v) && v > 0 ? v : 1;
+}
+
 document.getElementById('next').addEventListener('click', () => post('/next'));
 document.getElementById('prev').addEventListener('click', () => post('/previous'));
+document.getElementById('adjAdd').addEventListener('click', () => post('/timer/add?minutes=' + encodeURIComponent(String(readAdjMinutes()))));
+document.getElementById('adjSub').addEventListener('click', () => post('/timer/subtract?minutes=' + encodeURIComponent(String(readAdjMinutes()))));
+document.querySelectorAll('[data-add]').forEach((b) => b.addEventListener('click', () => post('/timer/add?minutes=' + encodeURIComponent(b.getAttribute('data-add')))));
+document.querySelectorAll('[data-sub]').forEach((b) => b.addEventListener('click', () => post('/timer/subtract?minutes=' + encodeURIComponent(b.getAttribute('data-sub')))));
+document.getElementById('addQueue').addEventListener('click', () => {
+  const title = document.getElementById('newTitle').value.trim();
+  const minutes = parseInt(document.getElementById('newMins').value, 10);
+  if (!title) { document.getElementById('error').textContent = 'Enter a title for the new queue item.'; return; }
+  if (!Number.isFinite(minutes) || minutes < 0) { document.getElementById('error').textContent = 'Enter a valid number of minutes (0 or more).'; return; }
+  postJson('/queue/add', JSON.stringify({ title: title, minutes: minutes }));
+  document.getElementById('newTitle').value = '';
+});
 
 fetchStatus();
 setInterval(fetchStatus, 2000);
@@ -267,7 +344,7 @@ setInterval(fetchStatus, 2000);
 					var payload = new
 					{
 						currentItem = current == null ? null : new { title = current.Title, timeInMinutes = current.TimeInMinutes },
-						queue = _scheduleService.ScheduleItems.Select(x => new { title = x.Title, timeInMinutes = x.TimeInMinutes }).ToArray(),
+						queue = _scheduleService.ScheduleItems.Select((x, i) => new { index = i, title = x.Title, timeInMinutes = x.TimeInMinutes }).ToArray(),
 						timer = new { minutes = _timerService.Minutes, seconds = _timerService.Seconds, title = _timerService.Title, isRunning = _timerService.IsRunning, isCompleted = _timerService.IsCompleted },
 						currentIndex = _scheduleService.CurrentIndex
 					};
@@ -352,6 +429,236 @@ setInterval(fetchStatus, 2000);
 			catch (Exception ex)
 			{
 				response.StatusCode = ex is InvalidOperationException ? 409 : 500;
+				json = JsonConvert.SerializeObject(new { success = false, message = ex.Message });
+			}
+			WriteResponse(response, json, "application/json");
+		}
+
+		private static int ParsePositiveMinutesFromRequest(HttpListenerRequest request, string body)
+		{
+			var q = request.QueryString["minutes"];
+			if (!string.IsNullOrEmpty(q) && int.TryParse(q, out int fromQuery) && fromQuery > 0)
+				return fromQuery;
+			if (!string.IsNullOrWhiteSpace(body))
+			{
+				var o = JObject.Parse(body);
+				var m = o["minutes"];
+				if (m != null && m.Type != JTokenType.Null)
+				{
+					var v = m.ToObject<int>();
+					if (v > 0) return v;
+				}
+			}
+			throw new ArgumentException("Provide a positive integer \"minutes\" in the query string or JSON body.");
+		}
+
+		private void HandleTimerAddRequest(HttpListenerRequest request, HttpListenerResponse response)
+		{
+			string json;
+			try
+			{
+				string body;
+				using (var reader = new StreamReader(request.InputStream, request.ContentEncoding ?? Encoding.UTF8))
+					body = reader.ReadToEnd();
+
+				var minutes = ParsePositiveMinutesFromRequest(request, body);
+
+				_uiControl.Invoke(new Action(() =>
+				{
+					_timerService.AddTime(minutes);
+					var cur = _scheduleService.GetCurrentItem();
+					if (cur != null)
+					{
+						var idx = _scheduleService.CurrentIndex;
+						_scheduleService.EditItem(idx, cur.Title, cur.TimeInMinutes + minutes);
+					}
+					_scheduleService.SaveSchedule();
+					Form2.Instance.titleUpdate();
+					(_uiControl as Form1)?.UpdateMiniText();
+				}));
+				response.StatusCode = 200;
+				json = JsonConvert.SerializeObject(new { success = true });
+			}
+			catch (Exception ex)
+			{
+				response.StatusCode = ex is ArgumentException ? 400 : 500;
+				json = JsonConvert.SerializeObject(new { success = false, message = ex.Message });
+			}
+			WriteResponse(response, json, "application/json");
+		}
+
+		private void HandleTimerSubtractRequest(HttpListenerRequest request, HttpListenerResponse response)
+		{
+			string json;
+			try
+			{
+				string body;
+				using (var reader = new StreamReader(request.InputStream, request.ContentEncoding ?? Encoding.UTF8))
+					body = reader.ReadToEnd();
+
+				var minutes = ParsePositiveMinutesFromRequest(request, body);
+
+				_uiControl.Invoke(new Action(() =>
+				{
+					if (_timerService.Minutes < minutes)
+						throw new InvalidOperationException("Unable to subtract — not enough time remaining on the timer.");
+
+					_timerService.SubtractTime(minutes);
+					var cur = _scheduleService.GetCurrentItem();
+					if (cur != null)
+					{
+						var idx = _scheduleService.CurrentIndex;
+						var newMins = Math.Max(0, cur.TimeInMinutes - minutes);
+						_scheduleService.EditItem(idx, cur.Title, newMins);
+					}
+					_scheduleService.SaveSchedule();
+					Form2.Instance.titleUpdate();
+					(_uiControl as Form1)?.UpdateMiniText();
+				}));
+				response.StatusCode = 200;
+				json = JsonConvert.SerializeObject(new { success = true });
+			}
+			catch (Exception ex)
+			{
+				response.StatusCode = ex is InvalidOperationException ? 409 : ex is ArgumentException ? 400 : 500;
+				json = JsonConvert.SerializeObject(new { success = false, message = ex.Message });
+			}
+			WriteResponse(response, json, "application/json");
+		}
+
+		private void HandleQueueAddRequest(HttpListenerRequest request, HttpListenerResponse response)
+		{
+			string json;
+			try
+			{
+				string body;
+				using (var reader = new StreamReader(request.InputStream, request.ContentEncoding ?? Encoding.UTF8))
+					body = reader.ReadToEnd();
+				if (string.IsNullOrWhiteSpace(body))
+					throw new ArgumentException("JSON body required with \"title\" and \"minutes\".");
+
+				var o = JObject.Parse(body);
+				var title = o["title"]?.Value<string>();
+				var minutesToken = o["minutes"];
+				if (minutesToken == null || minutesToken.Type == JTokenType.Null)
+					throw new ArgumentException("\"minutes\" must be a non-negative integer.");
+				var minutes = minutesToken.ToObject<int>();
+				if (string.IsNullOrWhiteSpace(title))
+					throw new ArgumentException("\"title\" is required.");
+				if (minutes < 0)
+					throw new ArgumentException("\"minutes\" must be non-negative.");
+
+				_uiControl.Invoke(new Action(() =>
+				{
+					_scheduleService.AddItem(title.Trim(), minutes);
+					_scheduleService.SaveSchedule();
+					Form2.Instance.titleUpdate();
+					(_uiControl as Form1)?.UpdateMiniText();
+				}));
+				response.StatusCode = 200;
+				json = JsonConvert.SerializeObject(new { success = true });
+			}
+			catch (Exception ex)
+			{
+				response.StatusCode = ex is ArgumentException ? 400 : 500;
+				json = JsonConvert.SerializeObject(new { success = false, message = ex.Message });
+			}
+			WriteResponse(response, json, "application/json");
+		}
+
+		private void HandleQueueRemoveRequest(HttpListenerRequest request, HttpListenerResponse response)
+		{
+			string json;
+			try
+			{
+				string body;
+				using (var reader = new StreamReader(request.InputStream, request.ContentEncoding ?? Encoding.UTF8))
+					body = reader.ReadToEnd();
+
+				int index;
+				var q = request.QueryString["index"];
+				if (!string.IsNullOrEmpty(q) && int.TryParse(q, out int fromQuery))
+					index = fromQuery;
+				else if (!string.IsNullOrWhiteSpace(body))
+				{
+					var o = JObject.Parse(body);
+					var ix = o["index"];
+					if (ix == null || ix.Type != JTokenType.Integer)
+						throw new ArgumentException("Provide \"index\" in the query string or JSON body.");
+					index = ix.Value<int>();
+				}
+				else
+					throw new ArgumentException("Provide \"index\" in the query string or JSON body.");
+
+				_uiControl.Invoke(new Action(() =>
+				{
+					if (index < 0 || index >= _scheduleService.ScheduleItems.Count)
+						throw new InvalidOperationException("Index is out of range.");
+					_scheduleService.DeleteItem(index);
+					_scheduleService.SaveSchedule();
+					Form2.Instance.titleUpdate();
+					(_uiControl as Form1)?.UpdateMiniText();
+				}));
+				response.StatusCode = 200;
+				json = JsonConvert.SerializeObject(new { success = true });
+			}
+			catch (Exception ex)
+			{
+				response.StatusCode = ex is InvalidOperationException ? 409 : ex is ArgumentException ? 400 : 500;
+				json = JsonConvert.SerializeObject(new { success = false, message = ex.Message });
+			}
+			WriteResponse(response, json, "application/json");
+		}
+
+		private void HandleQueueMoveRequest(HttpListenerRequest request, HttpListenerResponse response)
+		{
+			string json;
+			try
+			{
+				string body;
+				using (var reader = new StreamReader(request.InputStream, request.ContentEncoding ?? Encoding.UTF8))
+					body = reader.ReadToEnd();
+
+				int index;
+				int direction;
+				var qi = request.QueryString["index"];
+				var qd = request.QueryString["direction"];
+				if (!string.IsNullOrEmpty(qi) && int.TryParse(qi, out int idxQ) &&
+				    !string.IsNullOrEmpty(qd) && int.TryParse(qd, out int dirQ) && (dirQ == -1 || dirQ == 1))
+				{
+					index = idxQ;
+					direction = dirQ;
+				}
+				else if (!string.IsNullOrWhiteSpace(body))
+				{
+					var o = JObject.Parse(body);
+					var ix = o["index"];
+					var dir = o["direction"];
+					if (ix == null || ix.Type == JTokenType.Null || dir == null || dir.Type == JTokenType.Null)
+						throw new ArgumentException("JSON body must include \"index\" and \"direction\" (-1 = up, 1 = down).");
+					index = ix.ToObject<int>();
+					direction = dir.ToObject<int>();
+					if (direction != -1 && direction != 1)
+						throw new ArgumentException("\"direction\" must be -1 (move up) or 1 (move down).");
+				}
+				else
+					throw new ArgumentException("Provide \"index\" and \"direction\" in the query string or JSON body.");
+
+				_uiControl.Invoke(new Action(() =>
+				{
+					if (index < 0 || index >= _scheduleService.ScheduleItems.Count)
+						throw new InvalidOperationException("Index is out of range.");
+					_scheduleService.MoveItem(index, direction);
+					_scheduleService.SaveSchedule();
+					Form2.Instance.titleUpdate();
+					(_uiControl as Form1)?.UpdateMiniText();
+				}));
+				response.StatusCode = 200;
+				json = JsonConvert.SerializeObject(new { success = true });
+			}
+			catch (Exception ex)
+			{
+				response.StatusCode = ex is InvalidOperationException ? 409 : ex is ArgumentException ? 400 : 500;
 				json = JsonConvert.SerializeObject(new { success = false, message = ex.Message });
 			}
 			WriteResponse(response, json, "application/json");
