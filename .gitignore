@@ -8,6 +8,9 @@ x86/
 *.cache
 *.log
 
+# Fody (generated schema; optional for IDE)
+FodyWeavers.xsd
+
 # Visual Studio / MSBuild user state
 .vs/
 *.user
