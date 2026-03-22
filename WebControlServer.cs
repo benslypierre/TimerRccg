@@ -78,6 +78,9 @@ namespace TimerRccg
 					case "/":
 						ServeHtmlPage(response);
 						break;
+					case "/bethel-logo.png" when request.HttpMethod.Equals("GET", StringComparison.OrdinalIgnoreCase):
+						ServeLogoPng(response);
+						break;
 					case "/status" when request.HttpMethod.Equals("GET", StringComparison.OrdinalIgnoreCase):
 						HandleStatusRequest(response);
 						break;
@@ -165,6 +168,45 @@ namespace TimerRccg
 			catch { }
 		}
 
+		private static void ServeLogoPng(HttpListenerResponse response)
+		{
+			try
+			{
+				var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bethel-logo.png");
+				if (!File.Exists(path))
+				{
+					response.StatusCode = 404;
+					WriteStaticResponse(response, "Not Found", "text/plain");
+					return;
+				}
+				var bytes = File.ReadAllBytes(path);
+				response.StatusCode = 200;
+				response.ContentType = "image/png";
+				response.ContentLength64 = bytes.Length;
+				using (var output = response.OutputStream)
+				{
+					output.Write(bytes, 0, bytes.Length);
+				}
+			}
+			catch
+			{
+				response.StatusCode = 500;
+				try { WriteStaticResponse(response, "Error", "text/plain"); } catch { }
+			}
+		}
+
+		private static void WriteStaticResponse(HttpListenerResponse response, string content, string contentType)
+		{
+			var bytes = Encoding.UTF8.GetBytes(content ?? string.Empty);
+			response.ContentType = contentType;
+			response.ContentEncoding = Encoding.UTF8;
+			response.ContentLength64 = bytes.Length;
+			using (var output = response.OutputStream)
+			{
+				output.Write(bytes, 0, bytes.Length);
+			}
+		}
+
 		private void ServeHtmlPage(HttpListenerResponse response)
 		{
 			response.StatusCode = 200;
@@ -173,12 +215,15 @@ namespace TimerRccg
 <head>
 <meta charset=""utf-8"" />
 <meta name=""viewport"" content=""width=device-width, initial-scale=1"" />
-<title>Timer Remote Control</title>
+<title>RCCG Bethel Timer · Remote</title>
 <style>
   :root { --bg:#0f172a; --fg:#e2e8f0; --muted:#94a3b8; --accent:#22c55e; --danger:#ef4444; }
   *, *::before, *::after { box-sizing:border-box; }
   body { margin:0; font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--fg); overflow-x:hidden; }
   .container { max-width:900px; margin:0 auto; padding:24px; width:100%; min-width:0; }
+  .brand-strip { display:flex; align-items:center; gap:10px; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid #1f2937; min-width:0; }
+  .brand-strip img { width:28px; height:28px; object-fit:contain; border-radius:6px; flex-shrink:0; display:block; }
+  .brand-strip .brand-name { font-size:14px; font-weight:600; color:var(--fg); letter-spacing:0.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .card { background:#111827; border:1px solid #1f2937; border-radius:12px; padding:20px; min-width:0; max-width:100%; }
   .header { display:flex; align-items:center; justify-content:space-between; gap:12px; min-width:0; }
   .header > div:first-child { min-width:0; flex:1; overflow:hidden; }
@@ -213,6 +258,10 @@ namespace TimerRccg
 </head>
 <body>
   <div class=""container"">
+    <div class=""brand-strip"">
+      <img src=""/bethel-logo.png"" width=""28"" height=""28"" alt="""" />
+      <span class=""brand-name"">RCCG Bethel Timer</span>
+    </div>
     <div class=""card"">
       <div class=""header"">
         <div>
