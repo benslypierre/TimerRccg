@@ -176,16 +176,18 @@ namespace TimerRccg
 <title>Timer Remote Control</title>
 <style>
   :root { --bg:#0f172a; --fg:#e2e8f0; --muted:#94a3b8; --accent:#22c55e; --danger:#ef4444; }
-  body { margin:0; font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--fg); }
-  .container { max-width:900px; margin:0 auto; padding:24px; }
-  .card { background:#111827; border:1px solid #1f2937; border-radius:12px; padding:20px; }
-  .header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  *, *::before, *::after { box-sizing:border-box; }
+  body { margin:0; font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--fg); overflow-x:hidden; }
+  .container { max-width:900px; margin:0 auto; padding:24px; width:100%; min-width:0; }
+  .card { background:#111827; border:1px solid #1f2937; border-radius:12px; padding:20px; min-width:0; max-width:100%; }
+  .header { display:flex; align-items:center; justify-content:space-between; gap:12px; min-width:0; }
+  .header > div:first-child { min-width:0; flex:1; overflow:hidden; }
   .title { font-size:20px; font-weight:600; color:var(--muted); }
-  .time { font-size:48px; font-weight:800; letter-spacing:1px; }
-  .queue-section { margin-top:16px; width:100%; }
-  .queue { max-height:400px; overflow:auto; }
+  .time { font-size:48px; font-weight:800; letter-spacing:1px; flex-shrink:0; }
+  .queue-section { margin-top:16px; width:100%; min-width:0; max-width:100%; }
+  .queue { max-height:400px; overflow:auto; overflow-x:hidden; width:100%; min-width:0; }
   ul { list-style:none; padding:0; margin:0; }
-  li { padding:10px 12px; border-bottom:1px solid #1f2937; display:flex; justify-content:space-between; gap:12px; }
+  li { padding:10px 12px; border-bottom:1px solid #1f2937; display:flex; justify-content:flex-start; align-items:center; gap:8px; min-width:0; }
   .controls { display:flex; gap:12px; margin-top:12px; }
   button { cursor:pointer; border:0; border-radius:8px; padding:12px 16px; font-size:16px; font-weight:600; }
   .btn { background:#1f2937; color:var(--fg); }
@@ -200,9 +202,12 @@ namespace TimerRccg
   .toolbar label { color:var(--muted); font-size:14px; }
   .toolbar input[type=""number""], .toolbar input[type=""text""] { background:#111827; border:1px solid #374151; color:var(--fg); border-radius:6px; padding:8px 10px; font-size:15px; width:72px; }
   .toolbar input[type=""text""] { flex:1; min-width:140px; }
-  .queue li { align-items:center; gap:8px; flex-wrap:wrap; }
-  .queue .qi-time { color:var(--muted); min-width:72px; text-align:right; font-variant-numeric:tabular-nums; }
-  .queue-actions { display:flex; gap:4px; align-items:center; flex-shrink:0; }
+  .queue li { flex-wrap:nowrap; }
+  .queue .qi-title { flex:1 1 0; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .queue .qi-time { flex:0 0 auto; color:var(--muted); width:4.5rem; text-align:right; font-variant-numeric:tabular-nums; }
+  .queue-actions { display:flex; gap:4px; align-items:center; flex:0 0 auto; }
+  .queue .btn-queue-rm { flex:0 0 auto; }
+  .queue .btn-icon { padding:6px 8px; min-width:2rem; font-size:15px; line-height:1.1; }
   button:disabled { opacity:0.35; cursor:not-allowed; }
 </style>
 </head>
@@ -262,17 +267,17 @@ async function fetchStatus() {
     const lastIdx = list.length - 1;
     list.forEach((item) => {
       const li = document.createElement('li');
-      const left = document.createElement('div'); left.style.flex = '1'; left.style.minWidth = '120px'; left.textContent = item.title;
+      const left = document.createElement('div'); left.className = 'qi-title'; left.textContent = item.title; left.title = item.title;
       const mid = document.createElement('div'); mid.className = 'qi-time'; mid.textContent = item.timeInMinutes + ' min';
       const actions = document.createElement('div'); actions.className = 'queue-actions';
-      const up = document.createElement('button'); up.type = 'button'; up.className = 'btn btn-small'; up.textContent = '\u2191'; up.title = 'Move up';
-      const down = document.createElement('button'); down.type = 'button'; down.className = 'btn btn-small'; down.textContent = '\u2193'; down.title = 'Move down';
+      const up = document.createElement('button'); up.type = 'button'; up.className = 'btn btn-small btn-icon'; up.textContent = '\u2191'; up.title = 'Move up';
+      const down = document.createElement('button'); down.type = 'button'; down.className = 'btn btn-small btn-icon'; down.textContent = '\u2193'; down.title = 'Move down';
       if (item.index === 0) up.disabled = true;
       if (item.index === lastIdx) down.disabled = true;
       up.addEventListener('click', (ev) => { ev.preventDefault(); postJson('/queue/move', JSON.stringify({ index: item.index, direction: -1 })); });
       down.addEventListener('click', (ev) => { ev.preventDefault(); postJson('/queue/move', JSON.stringify({ index: item.index, direction: 1 })); });
       actions.appendChild(up); actions.appendChild(down);
-      const rm = document.createElement('button'); rm.type = 'button'; rm.className = 'btn btn-danger btn-small'; rm.textContent = 'Remove';
+      const rm = document.createElement('button'); rm.type = 'button'; rm.className = 'btn btn-danger btn-small btn-queue-rm'; rm.textContent = 'Remove';
       rm.addEventListener('click', (ev) => { ev.preventDefault(); postJson('/queue/remove', JSON.stringify({ index: item.index })); });
       if (item.index === s.currentIndex) { li.style.background = '#0b1220'; }
       li.appendChild(left); li.appendChild(mid); li.appendChild(actions); li.appendChild(rm); q.appendChild(li);
